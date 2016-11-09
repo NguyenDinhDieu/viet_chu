@@ -13,6 +13,7 @@
 		115E26A31DD3070F00A4D3E5 /* viet_chu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 115E26A11DD3070F00A4D3E5 /* viet_chu.xcdatamodeld */; };
 		115E26A51DD3070F00A4D3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 115E26A41DD3070F00A4D3E5 /* Assets.xcassets */; };
 		115E26A81DD3070F00A4D3E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115E26A61DD3070F00A4D3E5 /* LaunchScreen.storyboard */; };
+		11A247271DD31BAF006104F2 /* SVGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A247261DD31BAF006104F2 /* SVGPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		115E26A41DD3070F00A4D3E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		115E26A71DD3070F00A4D3E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		115E26A91DD3070F00A4D3E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11A247251DD31BAF006104F2 /* SVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPath.h; sourceTree = "<group>"; };
+		11A247261DD31BAF006104F2 /* SVGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			children = (
 				115E269A1DD3070F00A4D3E5 /* AppDelegate.swift */,
 				115E269C1DD3070F00A4D3E5 /* ViewController.swift */,
+				11A247251DD31BAF006104F2 /* SVGPath.h */,
+				11A247261DD31BAF006104F2 /* SVGPath.swift */,
 				115E269E1DD3070F00A4D3E5 /* Main.storyboard */,
 				115E26A41DD3070F00A4D3E5 /* Assets.xcassets */,
 				115E26A61DD3070F00A4D3E5 /* LaunchScreen.storyboard */,
@@ -141,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				115E269D1DD3070F00A4D3E5 /* ViewController.swift in Sources */,
+				11A247271DD31BAF006104F2 /* SVGPath.swift in Sources */,
 				115E26A31DD3070F00A4D3E5 /* viet_chu.xcdatamodeld in Sources */,
 				115E269B1DD3070F00A4D3E5 /* AppDelegate.swift in Sources */,
 			);
@@ -306,6 +312,7 @@
 				115E26AE1DD3070F00A4D3E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
