@@ -94,7 +94,7 @@ class ViewController: UIViewController {
          
 //        path = Alphabet.getC()
         //        print(path.cgPath.getPathElementsPoints())
-        path = Alphabet.getA()
+        path = Alphabet.getU()
 
 //        let trans = CGAffineTransform(scaleX: 5, y: 5)
 //        path.apply(trans)
@@ -162,7 +162,7 @@ class ViewController: UIViewController {
         
         originalPath = path
         let drawView = DrawView()
-        drawView.pointArrays = Alphabet.getAPoints()
+        drawView.pointArrays = Alphabet.getUPoints()
         drawView.backgroundColor = UIColor.white
         drawView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.height - 200)
         self.view.addSubview(drawView)
@@ -384,6 +384,42 @@ class Alphabet {
         pointArrays.append(array1)
         return pointArrays
     }
+    
+    class func getU() -> UIBezierPath {
+        let path = UIBezierPath(svgPath: "M1111 1770l55 -12v-463q14 -113 0 -364v-298q0 -261 9 -301q4 -122 46 -206q22 -25 95 -55q36 7 73 13q53 13 69 40q36 34 93 115q21 46 31 64q19 36 33.5 43.5t35.5 13.5q-2 -8 14 -20.5t13 -22.5q-34 -59 -87 -159q-17 -26 -41 -48q-29 -27 -48 -50q-81 -60 -201 -60q-92 29 -141 98q-27 56 -36 81q-16 51 -22 127q-6 -26 -38 -65q-42 -53 -51 -68l-113 -104q-58 -48 -169 -69q-87 8 -180 60q-81 104 -97 191q-4 31 -7 122q-1 27 -7 69q0 132 -6 234l3 177q-3 81 -3 191l-9 251l-23 139q-14 83 -69 159q-58 62 -174 90q-19 2 -35 2q-38 0 -153 -37q-88 -57 -142 -147q-14 -34 -28 -70t-18 -84q14 -117 72 -185q77 -49 142 -55q28 4 57 9q33 7 53 23q48 29 101 87q12 41 41 136q42 -5 72 -22q-11 -48 -50 -160q-52 -63 -130 -110q-40 -24 -150 -38q-82 11 -162 55q-28 29 -86 119q-21 43 -32 144q5 65 23 122q16 41 84 136q57 63 121 98t168 49q129 -11 193 -44.5t121 -120.5q41 -76 60 -190q18 -107 20 -230l11 -792q1 -105 11.5 -144t55.5 -105q67 -58 143 -58q19 0 45 3q93 36 147 96q51 55 130 165q6 16 47 92q7 4 4 104q-4 109 -1 122l3 304q1 121 -2 221q-4 114 -4 219v341z")
+        let trans = CGAffineTransform(scaleX: 0.15, y: -0.15)
+        path.apply(trans)
+        var translate = CGAffineTransform(translationX:(250 - path.currentPoint.x), y: (100 - path.currentPoint.y))
+        path.apply(translate)
+        print(path)
+        return path
+    }
+    
+    class func getUPoints() ->[[CGPoint]] {
+        var pointArrays = [[CGPoint]]()
+        var array1 = [CGPoint]()
+        array1.append(CGPoint(x:124.5,y: 165.5))
+        array1.append(CGPoint(x:54.0,y: 188.0))
+        array1.append(CGPoint(x:69.0,y: 119.5))
+        array1.append(CGPoint(x:136.5,y: 120.5))
+        array1.append(CGPoint(x:152.0,y: 187.0))
+        array1.append(CGPoint(x:154.0,y: 294.0))
+        array1.append(CGPoint(x:171.0,y: 350.0))
+        array1.append(CGPoint(x:216.5,y: 350.0))
+        array1.append(CGPoint(x:246.0,y: 314.0))
+        array1.append(CGPoint(x:252.5,y: 255.5))
+        array1.append(CGPoint(x:254.5,y: 181.5))
+        array1.append(CGPoint(x:253.0,y: 113.5))
+        array1.append(CGPoint(x:267.0,y: 353.5))
+        array1.append(CGPoint(x:301.0,y: 353.5))
+        array1.append(CGPoint(x:329.0,y: 315.5))
+        pointArrays.append(array1)
+        
+        return pointArrays
+    }
+    
+    
+
 }
 
 
