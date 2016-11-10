@@ -94,7 +94,7 @@ class ViewController: UIViewController {
          
 //        path = Alphabet.getC()
         //        print(path.cgPath.getPathElementsPoints())
-        path = Alphabet.getU()
+        path = Alphabet.getV()
 
 //        let trans = CGAffineTransform(scaleX: 5, y: 5)
 //        path.apply(trans)
@@ -162,7 +162,7 @@ class ViewController: UIViewController {
         
         originalPath = path
         let drawView = DrawView()
-        drawView.pointArrays = Alphabet.getUPoints()
+        drawView.pointArrays = Alphabet.getVPoints()
         drawView.backgroundColor = UIColor.white
         drawView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.height - 200)
         self.view.addSubview(drawView)
@@ -418,7 +418,145 @@ class Alphabet {
         return pointArrays
     }
     
+    class func getZ()-> UIBezierPath{
+        let path = UIBezierPath(svgPath: "M1291 1790q49 -5 68 -20q-12 -44 -40 -90q-25 -57 -131 -208q-100 -142 -188 -232l-237 -243q-116 -115 -281 -292q-101 -127 -223 -321q-76 -117 -150 -255q120 94 275 119q27 4 57 4q120 0 235 -65q120 -68 147 -79q72 -28 194 -34q140 -7 265 145q102 123 102 181q-1 4 -2 4q65 -16 58 -43q-5 -45 -76 -147q-61 -89 -101 -128q-85 -51 -91 -54q-66 -32 -132 -32q-121 0 -231 42q-44 17 -166 82q-88 46 -144 52q-35 4 -66 4q-107 0 -197 -50q-31 -17 -188 -130q-18 3 -48 37q34 110 103 223q273 449 440 619q200 199 400399q169 180 305 409q-121 -99 -367 -99q-164 0 -393 86q-73 27 -136 32q-77 -8 -130 -29q-15 -8 -113 -95q-34 -47 -44 -157q7 -57 27 -89.t75 -80.5l112 -38q97 2 139 29q27 14 99 70q7 7 46 63q26 0 55 -9q-14 -44 -48 -91q-53 -54 -111 -89q-30 -13 -116 -36q-61 -5 -107 8q-28 -4 -127 48q-55 53 -100 140q-10 77 22 214q26 41 98 128q38 22 139 66q91 15 139 3l55 -14l217 -73q112 -38 248 -20q139 5 240 64q4713 124 72z")
+        let trans = CGAffineTransform.init(scaleX: 0.15, y: -0.15)
+        path.apply(trans)
+        let translation = CGAffineTransform(translationX: (300 - path.currentPoint.x), y: (100 - path.currentPoint.y) )
+        path.apply(translation)
+        print(path)
+        return path
+        
+    }
     
+    class func getZPoints()->[[CGPoint]]{
+        var pointArrays = [[CGPoint]]()
+        var array1 = [CGPoint]()
+        array1.append(CGPoint(x:132.5,y: 225.0))
+        array1.append(CGPoint(x:56.5,y: 231.5))
+        array1.append(CGPoint(x:104.5,y: 168.5))
+        array1.append(CGPoint(x:200.5,y: 180.0))
+        array1.append(CGPoint(x:299.5,y: 107.5))
+        array1.append(CGPoint(x:190.0,y: 239.0))
+        array1.append(CGPoint(x:113.0,y: 358.0))
+        array1.append(CGPoint(x:182.0,y: 335.5))
+        array1.append(CGPoint(x:249.5,y: 362.0))
+        array1.append(CGPoint(x:315.5,y: 317.0))
+        pointArrays.append(array1)
+        return pointArrays
+    }
+    
+    class func getY()-> UIBezierPath{
+        let path = UIBezierPath(svgPath: "M1055 1765q62 -17 69 -68l-15 -130l-10 -540l4 -992l127 151l85 113q20 26 24 30q14 12 36 13l24 -41l-32 -56l-56 -66l-126 -156l-74 -98q-4 -67 -8 -181l-5 -266l-35 -191q-5 -28 -30 -92q-26 -70 -43 -91q-7 -18 -31 -44q-31 -33 -39 -45q-50 -42 -110 -62q-70 -7 -110 38q-40 38 -57 129q-13 69 14 186l43 134l64 143l95 145l69 94l63 78q19 16 45 70l-3 140l3 81q12 46 0 129l-105 -148q-44 -61 -116 -118q-73 -45 -151 -54q-68 -16 -132 0q-63 16 -113 70q-53 58 -68 145l-19 277l2 276l-3 109l3 114l6 141l4 139l1 128q1 94 -26 176l-57 72q-42 22 -125 56q-22 6 -112 0q-65 -4 -111 -27q-37 -12 -80 -54q-34 -42 -56 -87q-19 -55 -24 -125q0 -29 22 -111q37 -62 78.5 -91t90.5 -41q31 2 62 3q40 3 64 18q25 12 64 50q18 27 46 88q2 25 3 50q2 30 22 40q25 -3 57 -20q-2 -50 -13 -89q-13 -44 -44 -99l-73 -77l-84 -36l-110 -8q-69 20 -114 46l-70 61q-5 7 -56 91q-12 50 -16 112q-5 74 14 129q27 77 76 132q42 47 106 83q54 23 149 36q47 0 147 -12q82 -26 141 -68l61 -86l27 -107l17 -143l-2 -90l-7 -128l-3 -150l-4 -497l10 -187l13 -118l67 -97l94 -32l79 17q22 0 71 25t68 44l70 78l76 110q29 50 78 135q5 39 0 86q3 38 -2 142l7 179q-4 90 -10 322l10 145q-1 14 -8 132l8 124l-3 118zM1036 -156l-165 -220l-52 -78l-44 -89l-43 -122q-29 -82 -24 -156q6 -91 43 -137q31 -11 51 -11q25 0 53.5 21.5t91.5 107.5q34 82 69 213q20 167 20 282v189z")
+        let trans = CGAffineTransform.init(scaleX: 0.1, y: -0.1)
+        path.apply(trans)
+        let translation = CGAffineTransform(translationX: (200 - path.currentPoint.x), y: (250 - path.currentPoint.y) )
+        path.apply(translation)
+        print(path)
+        return path
+        
+    }
+    
+    class func getYPoints()->[[CGPoint]]{
+        var pointArrays = [[CGPoint]]()
+        var array1 = [CGPoint]()
+        array1.append(CGPoint(x:117.5,y: 96.5))
+        array1.append(CGPoint(x:67.5,y: 87.0))
+        array1.append(CGPoint(x:132.5,y: 78.5))
+        array1.append(CGPoint(x:134.0,y: 178.5))
+        array1.append(CGPoint(x:158.0,y: 230.5))
+        array1.append(CGPoint(x:198.5,y: 197.5))
+        array1.append(CGPoint(x:202.5,y: 154.0))
+        array1.append(CGPoint(x:204.5,y: 64.0))
+        array1.append(CGPoint(x:203.5,y: 259.0))
+        array1.append(CGPoint(x:175.0,y: 333.0))
+        array1.append(CGPoint(x:202.0,y: 237.0))
+        array1.append(CGPoint(x:232.5,y: 205.0))
+        pointArrays.append(array1)
+        return pointArrays
+    }
+
+    class func getX()-> UIBezierPath{
+        let path = UIBezierPath(svgPath: "M1223 1800q47 -4 78 -16q18 -10 46 -55l19 -61l3 -48l-3 -61l-17 -79l-69 -117l-121 -140l-78 -79q-53 -54 -102 -84l-106 -87l-114 -83l-8 -84q-3 -46 -11 -159l14 -199q12 -72 32 -113q14 -30 44 -92q22 -47 51 -91l76 -60l75 -23q56 -7 89 8q37 6 79 41l49 40q48 62 58 96l26 87l8 89l-17 73l-19 55l-36 52l-49 34q-41 15 -84 18q-43 -7 -73 -20q-18 -16 -63 -53q-24 -35 -36 -79q-14 -53 -13 -100l-18 -17q-37 -2 -55 14l7 72l14 65l29 63q19 42 71 73q39 30 90 40l58 11l68 -10l64 -31q19 -13 59 -57q35 -52 51 -103q17 -68 20 -110q4 -61 -14 -128q-10 -37 -36 -92q-22 -46 -50 -80l-60 -60l-86 -42q-74 -22 -124 -18q-33 2 -97 27q-42 22 -73 53l-60 60q-53 73 -87 171.5t-35 228.5l-42 -139q-45 -103 -89 -161l-98 -118q-41 -39 -111 -78q-38 -27 -108 -34q-32 -10 -100 -10q-57 21 -80 50q-26 28 -45 97q-6 90 -5 103q5 98 70 190q97 137 190 210l115 90l185 130q38 24 98 72q-6 75 -17 224q-2 42 -9 129l-11 93l-24 104q-11 25 -37 87q-19 19 -56 62l-74 54q-43 17 -104 20q-71 -7 -98 -20q-56 -37 -88 -73l-50 -92l-10 -73l-3 -72l23 -85q12 -46 40 -90q11 -17 52 -51q55 -38 105 -32q64 8 103 43q16 15 47 62l9 72l5 69q13 12 59 17q9 -56 5 -115q-11 -35 -32 -101l-55 -64q-23 -20 -51.5 -30.5t-55.5 -19.5q-16 -7 -84 -2q-48 9 -87 32q-35 21 -70 60l-50 80q-32 85 -32 181q0 46 8 90q15 81 61 146l59 67q74 62 193 74q73 -7 127 -32q58 -27 108 -73q40 -45 66 -93q36 -51 49 -131l27 -169l10 -206l21 152q6 44 33 124l53 129l64 104q29 32 83 87l70 52l68 39zM1235 1723q-56 3 -114 -20l-92 -66q-99 -99 -133 -174q-76 -166 -90 -260l-29 -200l72 47q52 39 134 101l101 95q30 28 84 96l55 69q19 23 52 84q26 74 19 139q-8 75 -59 89zM670 850l-188 -128q-94 -53 -174 -133l-115 -115q-51 -51 -87 -136q-26 -61 -27 -128q11 -87 55 -121q27 -7 54 -7q77 0 180 65q34 29 91 95l61 78l58 107q24 45 53 165l28 98q-1 14 6.5 61t7.5 70q0 17 -3 29z")
+        let trans = CGAffineTransform.init(scaleX: 0.1, y: -0.1)
+        path.apply(trans)
+        let translation = CGAffineTransform(translationX: (200 - path.currentPoint.x), y: (250 - path.currentPoint.y) )
+        path.apply(translation)
+        print(path)
+        return path
+        
+    }
+    
+    class func getXPoints()->[[CGPoint]]{
+        var pointArrays = [[CGPoint]]()
+        var array1 = [CGPoint]()
+        array1.append(CGPoint(x:183.5,y: 200.0))
+        array1.append(CGPoint(x:137.5,y: 189.5))
+        array1.append(CGPoint(x:144.5,y: 326.0))
+        array1.append(CGPoint(x:180.5,y: 257.5))
+        array1.append(CGPoint(x:261.5,y: 161.5))
+        array1.append(CGPoint(x:206.0,y: 240.0))
+        array1.append(CGPoint(x:237.0,y: 328.5))
+        array1.append(CGPoint(x:225.0,y: 292.5))
+        pointArrays.append(array1)
+        return pointArrays
+    }
+
+    class func getW()-> UIBezierPath{
+        let path = UIBezierPath(svgPath: "M1091 1770q33 2 55 -12v-463q4 -298 0 -364v-298q0 -261 9 -301q4 -122 46 -206q46 -54 109 -59q94 4 171 70q73 54 110 103q2 2 63 95q43 65 61 133q11 39 26 115q4 55 15 148q3 12 11 180q-1 79 5 189q5 24 -1 133q-84 22 -179 51q-70 45 -115 120q-34 56 -29 163q4 73 33 113q34 45 115 71q36 11 104 0q30 -219 13 -337q-8 -1 -16 -3q9 113 84 294q41 -37 56 -131q4 -20 7 -127q-1 -65 4 -131q69 -1 157 49q36 21 70 83q28 49 29 63q68 -28 68 -34q2 -23 -29 -74q-29 -47 -58 -75t-86 -56q-40 -20 -150 -41q-1 -56 -3 -175q-3 -102 -10 -182q-2 -53 -7 -151q-7 -57 -16.5 -162t-59.5 -192q-25 -50 -91 -152q-38 -59 -139 -140q-104 -77 -242 -77q-92 29 -141 98q-27 56 -36 81q-16 51 -22 127q-6 -26 -38 -65q-42 -53 -51 -68l-113 -104q-58 -48 -169 -69q-87 8 -180 60q-81 104 -97 191q-4 31 -7 122q-1 27 -7 69q0 132 -6 234l3 177q-3 81 -3 191l-9 251l-23 139q-14 83 -69 159q-58 62 -174 90q-19 2 -35 2q-38 0 -153 -37q-88 -57 -142 -147q-14 -34 -28 -70t-18 -84q14 -117 72 -185q77 -49 142 -55q89 7 125 40q31 19 86 79q26 54 41 136q19 -2 38 -3q2 -1 34 -19q-13 -54 -57 -159q-60 -73 -123 -111q-40 -24 -150 -38q-82 11 -162 55q-28 29 -86 119q-21 43 -32 144q5 65 23 122q16 41 84 136q57 63 121 98t168 49q129 -11 193 -44.5t121 -120.5q41 -76 60 -190q18 -107 20 -230l11 -792q1 -103 12 -143t55 -106q67 -58 143 -58q19 0 45 3q93 36 147 96q51 55 130 165q6 16 47 92q7 4 4 104q-4 109 -1 122l3 304q1 121 -2 221q-4 114 -4 219v341q3 25 20 32zM1533 1501q4 -76 75 -127q66 -48 160 -55q-2 53 -8 201q-3 70 -36 115t-76 43q-124 -6 -115 -177z")
+        let trans = CGAffineTransform.init(scaleX: 0.1, y: -0.1)
+        path.apply(trans)
+        let translation = CGAffineTransform(translationX: (250 - path.currentPoint.x), y: (150 - path.currentPoint.y) )
+        path.apply(translation)
+        print(path)
+        return path
+        
+    }
+    
+    class func getWPoints()->[[CGPoint]]{
+        var pointArrays = [[CGPoint]]()
+        var array1 = [CGPoint]()
+        array1.append(CGPoint(x:122.0,y: 169.0))
+        array1.append(CGPoint(x:78.5,y: 140.5))
+        array1.append(CGPoint(x:141.5,y: 199.0))
+        array1.append(CGPoint(x:169.0,y: 296.0))
+        array1.append(CGPoint(x:208.5,y: 199.5))
+        array1.append(CGPoint(x:207.0,y: 128.0))
+        array1.append(CGPoint(x:236.0,y: 295.5))
+        array1.append(CGPoint(x:277.5,y: 211.0))
+        array1.append(CGPoint(x:246.5,y: 150.5))
+        array1.append(CGPoint(x:309.5,y: 154.5))
+        pointArrays.append(array1)
+        return pointArrays
+    }
+    
+    class func getV()-> UIBezierPath{
+        let path = UIBezierPath(svgPath: "M841 1790q49 -5 68 -20q-12 -44 -40 -90q-40 -92 -60 -170q-46 -176 -46 -232v-258l29 -286q30 -300 23 -474q-11 -77 -52 -154l95 73l81 91q40 67 80 160l50 180q7 60 20 190q1 209 38 380l46 214q21 58 76 176q41 75 100 130q48 32 58 38q40 21 84 25q70 13 148 2q56 -8 111 -53q54 -55 45 -166q-5 -43 -30 -73q-28 -26 -56 -53q-73 -44 -170 -50q-17 19 -16 58q60 2 134 32q77 53 77 119q0 31 -13 71q-63 53 -154 53q-33 0 -79 -5q-47 -10 -119 -78l-90 -140q-35 -82 -60 -180q-56 -221 -69 -578q-2 -53 -41 -232q-23 -105 -60 -180l-90 -140l-95 -87q-97 -59 -205 -83q-13 7 -38 45l63 67q48 62 58 205q6 77 -8 284q-6 47 -21 249l-14 217v233l20 118l20 102l28 87l31 80q-37 -30 -108 -47q-112 -12 -202 34q-51 26 -136 32q-77 -8 -130 -29q-15 -8 -113 -95q-34 -47 -44 -157q7 -57 27 -89.5t75 -80.5l112 -38q97 2 139 29q27 14 99 70q7 7 46 63q26 0 55 -9q-14 -44 -48 -91q-53 -54 -111 -89q-30 -13 -116 -36q-61 -5 -107 8q-28 -4 -127 48q-55 53 -100 140q-10 77 22 214q26 41 98 128q38 22 139 66q91 15 139 3l55 -14l66 -24l81 -26q77 3 108 21q41 8 124 72z")
+        let trans = CGAffineTransform.init(scaleX: 0.1, y: -0.1)
+        path.apply(trans)
+        let translation = CGAffineTransform(translationX: (150 - path.currentPoint.x), y: (150 - path.currentPoint.y) )
+        path.apply(translation)
+        print(path)
+        return path
+        
+    }
+    
+    class func getVPoints()->[[CGPoint]]{
+        var pointArrays = [[CGPoint]]()
+        var array1 = [CGPoint]()
+        array1.append(CGPoint(x:123.5,y: 194.5))
+        array1.append(CGPoint(x:69.5,y: 177.0))
+        array1.append(CGPoint(x:151.5,y: 155.0))
+        array1.append(CGPoint(x:140.5,y: 245.5))
+        array1.append(CGPoint(x:134.5,y: 322.0))
+        array1.append(CGPoint(x:178.0,y: 238.5))
+        array1.append(CGPoint(x:232.0,y: 156.0))
+        array1.append(CGPoint(x:221.5,y: 188.0))
+        pointArrays.append(array1)
+        return pointArrays
+    }
+
+
 
 }
 
