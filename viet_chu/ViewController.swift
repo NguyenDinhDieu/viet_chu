@@ -30,10 +30,10 @@ class ViewController: UIViewController {
 //        
 //        // Create a CAShapeLayer
 //
-        path = Alphabet.getTest()
+        path = Alphabet.getAw()
         originalPath = path
         let drawView = DrawView()
-        drawView.pointArrays = Alphabet.getBPoints()
+        drawView.pointArrays = Alphabet.getAwPoints()
         drawView.backgroundColor = UIColor.green
         drawView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.height - 200)
         self.view.addSubview(drawView)
@@ -225,34 +225,48 @@ class Alphabet {
 //    }
     
     class func getA() -> UIBezierPath {
-        let path = UIBezierPath(svgPath: "M168 85q-35 41 -56 86q-23 50 -30 83q-6 24 -14 77q-2 66 11 124q18 76 74 147q50 63 127 93q44 17 95 18q8 0 54 -2q118 -18 174 -115q-2 39 -4 92q-1 24 19 29q48 6 53 -16v-357v-126q0 -73 3 -83q21 -71 65 -69q44 5 95 91q14 23 55 106q7 18 23 52q17 5 27 3 q18 -5 27 -25l-33 -76q-36 -84 -79 -133q-61 -84 -123 -84q-50 0 -84 45q-18 24 -35 77q-14 -19 -24 -33q-16 -22 -45 -40q-17 -15 -64 -33q-22 -12 -75 -17q-50 -4 -75 1q-58 4 -107 41q-12 7 -54 44zM231 588q-60 -67 -87 -156q-11 -46 -9 -106q1 -35 22 -94 q28 -79 65 -104q12 -20 78 -52q60 -24 125 -5q49 14 99 53q39 37 57 82q8 14 22 93l2 135q0 -9 -2 -11q-21 0 -21 42q-2 53 -7 63q-36 65 -90 96q-32 19 -108 26q-90 -13 -146 -62z")
-        let trans = CGAffineTransform(scaleX: 0.25, y: -0.25)
+//        let path = UIBezierPath(svgPath: "M168 85q-35 41 -56 86q-23 50 -30 83q-6 24 -14 77q-2 66 11 124q18 76 74 147q50 63 127 93q44 17 95 18q8 0 54 -2q118 -18 174 -115q-2 39 -4 92q-1 24 19 29q48 6 53 -16v-357v-126q0 -73 3 -83q21 -71 65 -69q44 5 95 91q14 23 55 106q7 18 23 52q17 5 27 3 q18 -5 27 -25l-33 -76q-36 -84 -79 -133q-61 -84 -123 -84q-50 0 -84 45q-18 24 -35 77q-14 -19 -24 -33q-16 -22 -45 -40q-17 -15 -64 -33q-22 -12 -75 -17q-50 -4 -75 1q-58 4 -107 41q-12 7 -54 44zM231 588q-60 -67 -87 -156q-11 -46 -9 -106q1 -35 22 -94 q28 -79 65 -104q12 -20 78 -52q60 -24 125 -5q49 14 99 53q39 37 57 82q8 14 22 93l2 135q0 -9 -2 -11q-21 0 -21 42q-2 53 -7 63q-36 65 -90 96q-32 19 -108 26q-90 -13 -146 -62z")
+//        let trans = CGAffineTransform(scaleX: 0.25, y: -0.25)
+//        path.apply(trans)
+////        var translate = CGAffineTransform(translationX:(50 - path.currentPoint.x), y: (100 - path.currentPoint.y))
+//        var translate = CGAffineTransform(translationX:(200 - path.currentPoint.x), y: (200 - path.currentPoint.y))
+//        path.apply(translate)
+//        print(path)
+//        return path
+        let cfURL = Bundle.main.url(forResource: "HLHOCTRO", withExtension: "TTF") as! CFURL
+        
+        CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
+        
+        //        let font = UIFont(name: "HL hoctro", size: 64)!
+        let font = UIFont(name: "HL hoctro", size: 64)!
+        
+        var unichars = [UniChar]("a".utf16)
+        var glyphs = [CGGlyph](repeating: 0, count: unichars.count)
+        CTFontGetGlyphsForCharacters(font, &unichars, &glyphs, unichars.count)
+        let cgpath = CTFontCreatePathForGlyph(font, glyphs[0], nil)!
+        let path = UIBezierPath(cgPath: cgpath)
+        let trans = CGAffineTransform(scaleX: 8, y: -8)
         path.apply(trans)
-        var translate = CGAffineTransform(translationX:(50 - path.currentPoint.x), y: (100 - path.currentPoint.y))
+        let translate = CGAffineTransform(translationX: 80, y: 300)
         path.apply(translate)
-        print(path)
         return path
     }
     
     class func getAPoints() ->[[CGPoint]] {
         var pointArrays = [[CGPoint]]()
         var array1 = [CGPoint]()
-        array1.append(CGPoint(x:139.0,y:  107.5))
-        array1.append(CGPoint(x:82.0,y:  76.0))
-        array1.append(CGPoint(x:27.0,y:  116.0))
-        array1.append(CGPoint(x:21,y:  186.0))
-        array1.append(CGPoint(x:80.5,y:  237.5))
-        array1.append(CGPoint(x:136.5,y:  209.0))
+        array1.append(CGPoint(x:218.5, y: 147.5))
+        array1.append(CGPoint(x:144.0, y: 140.0))
+        array1.append(CGPoint(x:109.0, y: 234.0))
+        array1.append(CGPoint(x:188.0, y: 292.0))
+        array1.append(CGPoint(x:240.5, y: 218.5))
+        array1.append(CGPoint(x:218.5, y: 147.5))
         pointArrays.append(array1)
         
         array1 = [CGPoint]()
-        array1.append(CGPoint(x: 151.5, y: 77.5))
-        array1.append(CGPoint(x: 152.5, y: 117.5))
-        array1.append(CGPoint(x: 150.5, y: 166.5))
-        array1.append(CGPoint(x: 152.0, y: 207.0))
-        array1.append(CGPoint(x: 184.5, y: 237.0))
-        array1.append(CGPoint(x: 212.0, y: 203.5))
-        array1.append(CGPoint(x: 227.0, y: 171.5))
+        array1.append(CGPoint(x:240.0, y: 129.0))
+        array1.append(CGPoint(x:264.0, y: 292.0))
+        array1.append(CGPoint(x:313.5, y: 230.5))
         pointArrays.append(array1)
         return pointArrays
     }
@@ -922,7 +936,65 @@ class Alphabet {
         let translate = CGAffineTransform(translationX: 50, y: 350)
         path.apply(translate)
         print(path)
+        let path1 = UIBezierPath()
+        path1.move(to: CGPoint(x: 134, y:55.8125))
+        path1.addQuadCurve(to: CGPoint(x: 144.875, y:81.21875), controlPoint: CGPoint(x: 135.6875, y:70.25))
+        path1.addQuadCurve(to:  CGPoint(x: 165.5, y:92.1875), controlPoint: CGPoint(x: 154.0625, y:92.1875))
+        path1.addQuadCurve(to:  CGPoint(x: 185.9375, y:81.03125), controlPoint: CGPoint(x: 176.9375, y:92.1875))
+        path1.addQuadCurve(to:  CGPoint(x: 196.625, y:55.8125), controlPoint: CGPoint(x: 194.9375, y:69.875))
+        path1.addLine(to: CGPoint(x: 220.625, y:55.8125))
+        path1.addQuadCurve(to:  CGPoint(x: 210.03125, y:89.46875), controlPoint: CGPoint(x: 218.375, y:76.625))
+        path1.addQuadCurve(to:  CGPoint(x: 189.875, y:109.625), controlPoint: CGPoint(x: 201.6875, y:102.3125))
+        path1.addQuadCurve(to:  CGPoint(x: 165.5, y:116.9375), controlPoint: CGPoint(x: 178.0625, y:116.9375))
+        path1.addQuadCurve(to:  CGPoint(x: 141.03125, y:109.625), controlPoint: CGPoint(x: 152.9375, y:116.9375))
+        path1.addQuadCurve(to:  CGPoint(x: 120.78125, y:89.46875), controlPoint: CGPoint(x: 129.125, y:102.3125))
+        path1.addQuadCurve(to:  CGPoint(x: 110, y:55.8125), controlPoint: CGPoint(x: 112.4375, y:76.625))
+        path1.close()
+        return path1
+    }
+    
+    class func getDauAw() -> UIBezierPath {
+        let path1 = UIBezierPath()
+        let startPoint = CGPoint(x: 134, y:55.8125)
+        path1.move(to: startPoint)
+        path1.addQuadCurve(to: CGPoint(x: 144.875, y:81.21875), controlPoint: CGPoint(x: 135.6875, y:70.25))
+        path1.addQuadCurve(to:  CGPoint(x: 165.5, y:92.1875), controlPoint: CGPoint(x: 154.0625, y:92.1875))
+        path1.addQuadCurve(to:  CGPoint(x: 185.9375, y:81.03125), controlPoint: CGPoint(x: 176.9375, y:92.1875))
+        path1.addQuadCurve(to:  CGPoint(x: 196.625, y:55.8125), controlPoint: CGPoint(x: 194.9375, y:69.875))
+        path1.addLine(to: CGPoint(x: 220.625, y:55.8125))
+        path1.addQuadCurve(to:  CGPoint(x: 210.03125, y:89.46875), controlPoint: CGPoint(x: 218.375, y:76.625))
+        path1.addQuadCurve(to:  CGPoint(x: 189.875, y:109.625), controlPoint: CGPoint(x: 201.6875, y:102.3125))
+        path1.addQuadCurve(to:  CGPoint(x: 165.5, y:116.9375), controlPoint: CGPoint(x: 178.0625, y:116.9375))
+        path1.addQuadCurve(to:  CGPoint(x: 141.03125, y:109.625), controlPoint: CGPoint(x: 152.9375, y:116.9375))
+        path1.addQuadCurve(to:  CGPoint(x: 120.78125, y:89.46875), controlPoint: CGPoint(x: 129.125, y:102.3125))
+        path1.addQuadCurve(to:  CGPoint(x: 110, y:55.8125), controlPoint: CGPoint(x: 112.4375, y:76.625))
+        path1.close()
+        let trans = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        path1.apply(trans)
+        let translate = CGAffineTransform(translationX: 50, y: 10)
+        path1.apply(translate)
+        return path1
+    }
+    
+    class func getDauAwPoints() -> [CGPoint] {
+        var array1 = [CGPoint]()
+        array1.append(CGPoint(x:149.5, y: 63.0))
+        array1.append(CGPoint(x:183.0, y: 94.0))
+        array1.append(CGPoint(x:216.0, y: 63.5))
+        return array1
+    }
+    
+    class func getAw() -> UIBezierPath {
+        let path = self.getA()
+        let path1 = self.getDauAw()
+        path.append(path1)
         return path
+    }
+    
+    class func getAwPoints() -> [[CGPoint]] {
+        var pointArrays = self.getAPoints()
+        pointArrays.append(self.getDauAwPoints())
+        return pointArrays
     }
     
     class func getJ()-> UIBezierPath{
