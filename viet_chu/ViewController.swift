@@ -32,10 +32,10 @@ class ViewController: UIViewController {
 //
 
 
-        path = Alphabet.getY()
+        path = Alphabet.getOW()
         originalPath = path
         let drawView = DrawView()
-        drawView.pointArrays = Alphabet.getYPoints()
+        drawView.pointArrays = Alphabet.getOWPoints()
 
 
         drawView.backgroundColor = UIColor.green
@@ -1077,6 +1077,36 @@ class Alphabet {
         array1.append(CGPoint(x:183.0,y: 58.5))
         array1.append(CGPoint(x:212.5,y: 92.0))
         return array1
+    }
+    
+    class func getOW() -> UIBezierPath{
+        let path = self.getO()
+        let path1 = self.getDauOW()
+        path.append(path1)
+        return path
+    }
+    
+    class func getDauOW() -> UIBezierPath{
+        let path = UIBezierPath()
+        path.move(to:  CGPoint(x:215.5, y:134.0))
+        path.addQuadCurve(to:  CGPoint(x:209.0, y:96.0), controlPoint: CGPoint(x:220.5, y:113.5))
+        path.addQuadCurve(to:  CGPoint(x:212.5, y:80.0), controlPoint: CGPoint(x:197.0, y:86.5))
+        path.addQuadCurve(to:  CGPoint(x:233.0, y:101.0), controlPoint: CGPoint(x:230.0, y:86.0))
+        path.addQuadCurve(to:  CGPoint(x:233.0, y:127.5), controlPoint: CGPoint(x:237.5, y:114.5))
+        path.addLine(to: CGPoint(x:227.0, y:143.5))
+        path.close()
+        return path
+        
+    }
+    
+    class func getOWPoints()->[[CGPoint]]{
+        var pointArrays = self.getOPoints()
+        var array1 = [CGPoint]()
+        array1.append(CGPoint(x:208.5,y: 86.0))
+        array1.append(CGPoint(x:225.5,y: 104.0))
+        array1.append(CGPoint(x:220.5,y: 137.5))
+        pointArrays.append(array1)
+        return pointArrays
     }
 
 }
