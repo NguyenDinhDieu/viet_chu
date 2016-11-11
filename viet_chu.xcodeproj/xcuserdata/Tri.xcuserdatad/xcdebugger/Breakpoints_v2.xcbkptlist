@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viet_chu/ViewController.swift"
-            timestampString = "500546491.099945"
+            timestampString = "500546985.726738"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "draw(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viet_chu/ViewController.swift"
-            timestampString = "500543147.084707"
+            timestampString = "500546985.726738"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "DrawView"
             landmarkType = "3">
          </BreakpointContent>
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viet_chu/ViewController.swift"
-            timestampString = "500543152.283051"
+            timestampString = "500546985.726738"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "addLabel()"
-            landmarkType = "7">
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "DrawView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
