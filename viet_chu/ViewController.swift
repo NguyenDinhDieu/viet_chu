@@ -29,9 +29,7 @@ class ViewController: UIViewController {
 //        path = Alphabet.getM()
 //        
 //        // Create a CAShapeLayer
-//        
-        
-        
+//
         path = Alphabet.getTest()
         originalPath = path
         let drawView = DrawView()
@@ -952,8 +950,6 @@ class Alphabet {
         pointArrays.append(array1)
         return pointArrays
     }
-
-
 
 }
 
