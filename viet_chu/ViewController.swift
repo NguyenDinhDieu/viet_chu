@@ -30,11 +30,11 @@ class ViewController: UIViewController {
 //        
 //        // Create a CAShapeLayer
 //
-        path = Alphabet.getQ()
+        path = Alphabet.getEE()
         originalPath = path
         let drawView = DrawView()
         drawView.addLabel()
-        drawView.pointArrays = Alphabet.getQPoints()
+        drawView.pointArrays = Alphabet.getEEPoints()
 
         drawView.backgroundColor = UIColor.green
         drawView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.height - 200)
@@ -117,6 +117,7 @@ class DrawView: UIView {
         let line = Line(lastPoint, lastPoint!)
         lines.append(line)
         label.text = lastPoint.debugDescription
+        print(lastPoint)
         self.setNeedsDisplay()
     }
     
@@ -629,24 +630,19 @@ class Alphabet {
     }
     
     class func getE() -> UIBezierPath {
-        let path = UIBezierPath(svgPath: "M312 212l-103 -47q27 -49 63 -66q69 -43 142 -27q56 9 113 45t90 82q27 34 62 87q17 11 23 10q14 -12 33 -38q-26 -38 -63 -95q-15 -21 -67 -73q-44 -34 -65.5 -45t-68.5 -29q-53 -16 -101 -16q-81 0 -144 50q-49 38 -78 82q-65 -33 -123 -44l-22 11q-12 21 -6 50l118 47 q-27 63 -29 144q-1 62 14 99q6 41 35 85l39 58q14 17 50 54q30 27 67 47q52 29 130 29q113 0 158 -78q29 -50 22 -110q-6 -55 -19 -78l-35 -63l-41 -48q-32 -37 -94 -70zM178 469q-28 -70 -28 -105q2 -30 6 -79q6 -33 19 -61q79 28 146 65q72 39 103 65q28 22 74 74 q46 79 39 137q-6 43 -49 65q-35 18 -79 15q-92 -6 -151 -65t-80 -111z")
-        let trans = CGAffineTransform.init(scaleX: 0.2, y: -0.2)
-        path.apply(trans)
-        let translation = CGAffineTransform(translationX: (150 - path.currentPoint.x), y: (150 - path.currentPoint.y) )
-        path.apply(translation)
+        let path = getCharacter(character: "e", scale: 8, translation: CGPoint(x: 85, y: 300))
         return path
     }
     
     class func getEPoints() -> [[CGPoint]] {
         var pointArrays = [[CGPoint]]()
         var array1 = [CGPoint]()
-        array1.append(CGPoint(x:120.5, y: 220.5))
-        array1.append(CGPoint(x:187.0, y: 190.0))
-        array1.append(CGPoint(x:228.0, y: 129.0))
-        array1.append(CGPoint(x:164.0, y: 124.0))
-        array1.append(CGPoint(x:139.0, y: 181.0))
-        array1.append(CGPoint(x:198.0, y: 236.5))
-        array1.append(CGPoint(x:255.0, y: 192.0))
+        array1.append(CGPoint(x:91.5, y: 271.5))
+        array1.append(CGPoint(x:189.0, y: 224.5))
+        array1.append(CGPoint(x:209.0, y: 134.5))
+        array1.append(CGPoint(x:119.5, y: 185.0))
+        array1.append(CGPoint(x:178.0, y: 290.5))
+        array1.append(CGPoint(x:259.0, y: 237.0))
         pointArrays.append(array1)
         return pointArrays
     }
