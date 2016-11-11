@@ -14,6 +14,9 @@
 		115E26A51DD3070F00A4D3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 115E26A41DD3070F00A4D3E5 /* Assets.xcassets */; };
 		115E26A81DD3070F00A4D3E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115E26A61DD3070F00A4D3E5 /* LaunchScreen.storyboard */; };
 		11A247271DD31BAF006104F2 /* SVGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A247261DD31BAF006104F2 /* SVGPath.swift */; };
+		11A694CC1DD57267006CDF27 /* Monaco.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 11A694CB1DD57267006CDF27 /* Monaco.dfont */; };
+		11F65A751DD466E400B47A46 /* HLHOCTRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 11F65A741DD466E400B47A46 /* HLHOCTRO.TTF */; };
+		11F65A771DD46F9100B47A46 /* VNARIS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 11F65A761DD46F9100B47A46 /* VNARIS.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		115E26A91DD3070F00A4D3E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11A247251DD31BAF006104F2 /* SVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPath.h; sourceTree = "<group>"; };
 		11A247261DD31BAF006104F2 /* SVGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGPath.swift; sourceTree = "<group>"; };
+		11A694CB1DD57267006CDF27 /* Monaco.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Monaco.dfont; sourceTree = "<group>"; };
+		11F65A741DD466E400B47A46 /* HLHOCTRO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = HLHOCTRO.TTF; sourceTree = "<group>"; };
+		11F65A761DD46F9100B47A46 /* VNARIS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = VNARIS.TTF; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 			children = (
 				115E269A1DD3070F00A4D3E5 /* AppDelegate.swift */,
 				115E269C1DD3070F00A4D3E5 /* ViewController.swift */,
+				11A694CB1DD57267006CDF27 /* Monaco.dfont */,
+				11F65A761DD46F9100B47A46 /* VNARIS.TTF */,
+				11F65A741DD466E400B47A46 /* HLHOCTRO.TTF */,
 				11A247251DD31BAF006104F2 /* SVGPath.h */,
 				11A247261DD31BAF006104F2 /* SVGPath.swift */,
 				115E269E1DD3070F00A4D3E5 /* Main.storyboard */,
@@ -133,8 +142,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				115E26A81DD3070F00A4D3E5 /* LaunchScreen.storyboard in Resources */,
+				11F65A771DD46F9100B47A46 /* VNARIS.TTF in Resources */,
 				115E26A51DD3070F00A4D3E5 /* Assets.xcassets in Resources */,
 				115E26A01DD3070F00A4D3E5 /* Main.storyboard in Resources */,
+				11A694CC1DD57267006CDF27 /* Monaco.dfont in Resources */,
+				11F65A751DD466E400B47A46 /* HLHOCTRO.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
