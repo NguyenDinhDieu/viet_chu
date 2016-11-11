@@ -24,16 +24,20 @@ class ViewController: UIViewController {
     var view1 = UIImageView()
     var originalPath : UIBezierPath!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        path = Alphabet.getM()
 //        
 //        // Create a CAShapeLayer
 //
+
         path = Alphabet.getS()
         originalPath = path
         let drawView = DrawView()
         drawView.pointArrays = Alphabet.getSPoints()
+
         drawView.backgroundColor = UIColor.green
         drawView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.height - 200)
         self.view.addSubview(drawView)
@@ -83,6 +87,27 @@ class DrawView: UIView {
     var drawPath = UIBezierPath()
     var pointArray = [CGPoint]()
     var pointArrays = [[CGPoint]]()
+    var label = UILabel()
+    
+//    init() {
+////        super.init()
+////        super.init(coder: NSCoder)
+//        label.text = "0,0"
+//        label.adjustsFontSizeToFitWidth = true
+//        //        label.font.pointSize = 40
+//        label.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
+//        self.addSubview(label)
+//    }
+    
+    func addLabel() {
+        label.text = "0,0"
+        label.adjustsFontSizeToFitWidth = true
+        //        label.font.pointSize = 40
+        label.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
+        self.addSubview(label)
+    }
+    
+    
     
     func setOriginal(_ path: CGPath){
         originalPath = path
@@ -93,6 +118,7 @@ class DrawView: UIView {
     }
     
     var firstPoint: CGPoint!
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         firstPoint = touches.first?.location(in: self) // TODO
         lastPoint = touches.first?.location(in: self)
@@ -102,13 +128,14 @@ class DrawView: UIView {
         drawPath.addLine(to: lastPoint)
         let line = Line(lastPoint, lastPoint!)
         lines.append(line)
-        print(lastPoint)
+        label.text = lastPoint.debugDescription
         //        print(originalPath.getPathElementsPointsAndTypes())
         self.setNeedsDisplay()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let newPoint = touches.first?.location(in: self)
+        label.text = newPoint!.debugDescription
         //        if !(newPoint?.equalTo(lastPoint))! {
         //            let line = Line(lastPoint, newPoint!)
         //            drawPath.addLine(to: newPoint!)
@@ -177,6 +204,13 @@ class DrawView: UIView {
                 context!.strokePath()
             }
         }
+        // display only 1 point each time
+//        let point = points?.first
+//        if point != nil {
+//                            context!.move(to: point!)
+//                            context!.addLine(to: point!)
+//                            context!.strokePath()
+//        }
         context!.setStrokeColor(UIColor.red.cgColor)
         
         context!.setLineWidth(20)
@@ -567,6 +601,27 @@ class Alphabet {
         pointArrays.append(array1)
         return pointArrays
     }
+    
+    class func getDD() -> UIBezierPath {
+        let path = self.getD()
+        let path1 = UIBezierPath()
+        path1.move(to: CGPoint(x: 169, y: 113))
+        path1.addLine(to: CGPoint(x: 270, y: 113))
+        path1.addQuadCurve(to: CGPoint(x: 270, y: 127), controlPoint: CGPoint(x: 273, y: 120))
+        path1.addLine(to: CGPoint(x: 169, y: 127))
+        path1.addQuadCurve(to: CGPoint(x: 169, y: 113), controlPoint: CGPoint(x: 166, y: 120))
+        path.append(path1)
+        return path
+    }
+    
+    class func getDDPoints() -> [[CGPoint]] {
+        var pointArrays = self.getDPoints()
+        var array1 = [CGPoint]()
+        array1.append(CGPoint(x: 170, y: 120))
+        array1.append(CGPoint(x: 269, y: 120))
+        pointArrays.append(array1)
+        return pointArrays
+    }
         
     class func getR()-> UIBezierPath{
         return getCharacter(character: "r", translation: CGPoint(x: 70, y: 250))
@@ -911,14 +966,14 @@ class Alphabet {
     }
     
     class func getTest() -> UIBezierPath {
-        let cfURL = Bundle.main.url(forResource: "Monaco", withExtension: "dfont") as! CFURL
+        let cfURL = Bundle.main.url(forResource: "HLHOCTRO", withExtension: "TTF") as! CFURL
         
         CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
         
         //        let font = UIFont(name: "HL hoctro", size: 64)!
-        let font = UIFont(name: "Monaco", size: 64)!
+        let font = UIFont(name: "HL hoctro", size: 64)!
         
-        var unichars = [UniChar]("ă".utf16)
+        var unichars = [UniChar]("d".utf16)
         var glyphs = [CGGlyph](repeating: 0, count: unichars.count)
         CTFontGetGlyphsForCharacters(font, &unichars, &glyphs, unichars.count)
         let cgpath = CTFontCreatePathForGlyph(font, glyphs[0], nil)!
@@ -928,21 +983,21 @@ class Alphabet {
         let translate = CGAffineTransform(translationX: 50, y: 350)
         path.apply(translate)
         print(path)
-        let path1 = UIBezierPath()
-        path1.move(to: CGPoint(x: 134, y:55.8125))
-        path1.addQuadCurve(to: CGPoint(x: 144.875, y:81.21875), controlPoint: CGPoint(x: 135.6875, y:70.25))
-        path1.addQuadCurve(to:  CGPoint(x: 165.5, y:92.1875), controlPoint: CGPoint(x: 154.0625, y:92.1875))
-        path1.addQuadCurve(to:  CGPoint(x: 185.9375, y:81.03125), controlPoint: CGPoint(x: 176.9375, y:92.1875))
-        path1.addQuadCurve(to:  CGPoint(x: 196.625, y:55.8125), controlPoint: CGPoint(x: 194.9375, y:69.875))
-        path1.addLine(to: CGPoint(x: 220.625, y:55.8125))
-        path1.addQuadCurve(to:  CGPoint(x: 210.03125, y:89.46875), controlPoint: CGPoint(x: 218.375, y:76.625))
-        path1.addQuadCurve(to:  CGPoint(x: 189.875, y:109.625), controlPoint: CGPoint(x: 201.6875, y:102.3125))
-        path1.addQuadCurve(to:  CGPoint(x: 165.5, y:116.9375), controlPoint: CGPoint(x: 178.0625, y:116.9375))
-        path1.addQuadCurve(to:  CGPoint(x: 141.03125, y:109.625), controlPoint: CGPoint(x: 152.9375, y:116.9375))
-        path1.addQuadCurve(to:  CGPoint(x: 120.78125, y:89.46875), controlPoint: CGPoint(x: 129.125, y:102.3125))
-        path1.addQuadCurve(to:  CGPoint(x: 110, y:55.8125), controlPoint: CGPoint(x: 112.4375, y:76.625))
-        path1.close()
-        return path1
+//        let path1 = UIBezierPath()
+//        path1.move(to: CGPoint(x: 134, y:55.8125))
+//        path1.addQuadCurve(to: CGPoint(x: 144.875, y:81.21875), controlPoint: CGPoint(x: 135.6875, y:70.25))
+//        path1.addQuadCurve(to:  CGPoint(x: 165.5, y:92.1875), controlPoint: CGPoint(x: 154.0625, y:92.1875))
+//        path1.addQuadCurve(to:  CGPoint(x: 185.9375, y:81.03125), controlPoint: CGPoint(x: 176.9375, y:92.1875))
+//        path1.addQuadCurve(to:  CGPoint(x: 196.625, y:55.8125), controlPoint: CGPoint(x: 194.9375, y:69.875))
+//        path1.addLine(to: CGPoint(x: 220.625, y:55.8125))
+//        path1.addQuadCurve(to:  CGPoint(x: 210.03125, y:89.46875), controlPoint: CGPoint(x: 218.375, y:76.625))
+//        path1.addQuadCurve(to:  CGPoint(x: 189.875, y:109.625), controlPoint: CGPoint(x: 201.6875, y:102.3125))
+//        path1.addQuadCurve(to:  CGPoint(x: 165.5, y:116.9375), controlPoint: CGPoint(x: 178.0625, y:116.9375))
+//        path1.addQuadCurve(to:  CGPoint(x: 141.03125, y:109.625), controlPoint: CGPoint(x: 152.9375, y:116.9375))
+//        path1.addQuadCurve(to:  CGPoint(x: 120.78125, y:89.46875), controlPoint: CGPoint(x: 129.125, y:102.3125))
+//        path1.addQuadCurve(to:  CGPoint(x: 110, y:55.8125), controlPoint: CGPoint(x: 112.4375, y:76.625))
+//        path1.close()
+        return path
     }
     
     class func getDauAw() -> UIBezierPath {
