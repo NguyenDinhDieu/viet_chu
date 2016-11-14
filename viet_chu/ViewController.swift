@@ -41,8 +41,8 @@ class ViewController: UIViewController {
 
         drawView.backgroundColor = UIColor.green
         drawView.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.height - 200)
-        self.view.addSubview(drawView)
-        drawView.setOriginal(originalPath.cgPath)
+        //self.view.addSubview(drawView)
+        //drawView.setOriginal(originalPath.cgPath)
     }
     var tmpPath = UIBezierPath()
     var tmpShape = CAShapeLayer()

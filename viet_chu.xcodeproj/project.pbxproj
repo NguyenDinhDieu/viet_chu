@@ -17,6 +17,7 @@
 		11A694CC1DD57267006CDF27 /* Monaco.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 11A694CB1DD57267006CDF27 /* Monaco.dfont */; };
 		11F65A751DD466E400B47A46 /* HLHOCTRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 11F65A741DD466E400B47A46 /* HLHOCTRO.TTF */; };
 		11F65A771DD46F9100B47A46 /* VNARIS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 11F65A761DD46F9100B47A46 /* VNARIS.TTF */; };
+		84298F861DD9700600145796 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84298F851DD9700600145796 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		11A694CB1DD57267006CDF27 /* Monaco.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Monaco.dfont; sourceTree = "<group>"; };
 		11F65A741DD466E400B47A46 /* HLHOCTRO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = HLHOCTRO.TTF; sourceTree = "<group>"; };
 		11F65A761DD46F9100B47A46 /* VNARIS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = VNARIS.TTF; sourceTree = "<group>"; };
+		84298F851DD9700600145796 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				115E26A61DD3070F00A4D3E5 /* LaunchScreen.storyboard */,
 				115E26A91DD3070F00A4D3E5 /* Info.plist */,
 				115E26A11DD3070F00A4D3E5 /* viet_chu.xcdatamodeld */,
+				84298F851DD9700600145796 /* MenuViewController.swift */,
 			);
 			path = viet_chu;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				115E269D1DD3070F00A4D3E5 /* ViewController.swift in Sources */,
+				84298F861DD9700600145796 /* MenuViewController.swift in Sources */,
 				11A247271DD31BAF006104F2 /* SVGPath.swift in Sources */,
 				115E26A31DD3070F00A4D3E5 /* viet_chu.xcdatamodeld in Sources */,
 				115E269B1DD3070F00A4D3E5 /* AppDelegate.swift in Sources */,
