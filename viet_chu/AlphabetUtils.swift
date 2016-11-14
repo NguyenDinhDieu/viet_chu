@@ -150,6 +150,15 @@ class AlphabetUtils {
         return pointArrays
     }
     
+    class func getAArows() -> [UIBezierPath] {
+        var arrows = [UIBezierPath]()
+        let arrowPath = UIBezierPath.arrow(from: CGPoint(x:218.5, y: 147.5), to: CGPoint(x:203.1, y: 135.5), tailWidth: 1, headWidth: 6, headLength: 6)
+        arrows.append(arrowPath)
+        let arrowPath1 = UIBezierPath.arrow(from: CGPoint(x:240.0, y: 129.0), to: CGPoint(x:240, y: 145.5), tailWidth: 1, headWidth: 6, headLength: 6)
+        arrows.append(arrowPath1)
+        return arrows
+    }
+    
     class func getU() -> UIBezierPath {
         return getCharacter(character: "u", scale: 6, translation: CGPoint(x: 100, y: 250))
     }

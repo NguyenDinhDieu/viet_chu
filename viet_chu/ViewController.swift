@@ -17,11 +17,8 @@ class ViewController: UIViewController {
     var rightMenu: UIView! // right menu
     let drawView = DrawView() // draw view
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         drawView.frame = CGRect(x: self.view.frame.width * 2 / 10, y: 0, width: self.view.frame.width * 6 / 10, height: self.view.frame.height)
         self.createDrawView()
         self.view.addSubview(drawView)
@@ -103,25 +100,39 @@ class ViewController: UIViewController {
     // create draw view
     func createDrawView() {
         print("create new draw view")
+        drawView.conLabel.removeFromSuperview()
+        drawView.isCompleted = false
         drawView.lines = [Line]()
-        path = AlphabetUtils.getM() // TODO get from an array
-        drawView.pointArrays = AlphabetUtils.getMPoints() // TODO get from an array
+        path = AlphabetUtils.getA() // TODO get from an array
+        drawView.pointArrays = AlphabetUtils.getAPoints() // TODO get from an array
+        
         let transX = drawView.frame.width / 2 - path.bounds.midX
         let transY = drawView.frame.height / 2 - path.bounds.midY
         let trans = CGAffineTransform(translationX: transX, y: transY)
         path.apply(trans)
+        // translate points
         var newPointArrays = [[CGPoint]]()
         for points in drawView.pointArrays {
             var newPoints = [CGPoint]()
             for point in points {
                 let point2 = point.applying(trans)
-                //                point = CGPoint(x: 0, y: 0)
                 newPoints.append(point2)
             }
             newPointArrays.append(newPoints)
         }
+        
+        // translate arrows
+        var newArrows = [UIBezierPath]()
+        for arrow in AlphabetUtils.getAArows() {
+            let newArrow = arrow
+            newArrow.apply(trans)
+            newArrows.append(newArrow)
+        }
+        
+        drawView.arrows = newArrows
+        
         drawView.pointArrays = newPointArrays
-        //        drawView.addLabel()
+//                drawView.addLabel()
         drawView.backgroundColor = UIColor.green
         drawView.setOriginal(path.cgPath)
         drawView.setNeedsDisplay()
