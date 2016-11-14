@@ -19,9 +19,91 @@ class AlphabetUtils {
             // TODO create swtch - case for all characters
         case "a" :
             alphabet.path = AlphabetUtils.getA()
+            alphabet.pointArrays = AlphabetUtils.getAPoints()
+        case "ă" :
+            alphabet.path = AlphabetUtils.getAw()
+            alphabet.pointArrays = AlphabetUtils.getAwPoints()
+        case "â" :
+            alphabet.path = AlphabetUtils.getAA()
             alphabet.pointArrays = AlphabetUtils.getAAPoints()
         case "b":
-            print("b")
+            alphabet.path = AlphabetUtils.getB()
+            alphabet.pointArrays = AlphabetUtils.getBPoints()
+        case "c":
+            alphabet.path = AlphabetUtils.getC()
+            alphabet.pointArrays = AlphabetUtils.getCPoints()
+        case "d":
+            alphabet.path = AlphabetUtils.getD()
+            alphabet.pointArrays = AlphabetUtils.getDPoints()
+        case "đ":
+            alphabet.path = AlphabetUtils.getDD()
+            alphabet.pointArrays = AlphabetUtils.getDDPoints()
+        case "e":
+            alphabet.path = AlphabetUtils.getE()
+            alphabet.pointArrays = AlphabetUtils.getEPoints()
+        case "ê":
+            alphabet.path = AlphabetUtils.getEE()
+            alphabet.pointArrays = AlphabetUtils.getEEPoints()
+        case "g":
+            alphabet.path = AlphabetUtils.getG()
+            alphabet.pointArrays = AlphabetUtils.getGPoints()
+        case "h":
+            alphabet.path = AlphabetUtils.getH()
+            alphabet.pointArrays = AlphabetUtils.getHPoints()
+        case "i":
+            alphabet.path = AlphabetUtils.getI()
+            alphabet.pointArrays = AlphabetUtils.getIPoints()
+        case "k":
+            alphabet.path = AlphabetUtils.getK()
+            alphabet.pointArrays = AlphabetUtils.getKPoints()
+        case "l":
+            alphabet.path = AlphabetUtils.getL()
+            alphabet.pointArrays = AlphabetUtils.getLPoints()
+        case "m":
+            alphabet.path = AlphabetUtils.getM()
+            alphabet.pointArrays = AlphabetUtils.getMPoints()
+        case "n":
+            alphabet.path = AlphabetUtils.getN()
+            alphabet.pointArrays = AlphabetUtils.getNPoints()
+        case "o":
+            alphabet.path = AlphabetUtils.getO()
+            alphabet.pointArrays = AlphabetUtils.getOPoints()
+        case "ô":
+            alphabet.path = AlphabetUtils.getOO()
+            alphabet.pointArrays = AlphabetUtils.getOOPoints()
+        case "ơ":
+            alphabet.path = AlphabetUtils.getOW()
+            alphabet.pointArrays = AlphabetUtils.getOWPoints()
+        case "u":
+            alphabet.path = AlphabetUtils.getU()
+            alphabet.pointArrays = AlphabetUtils.getUPoints()
+        case "ư":
+            alphabet.path = AlphabetUtils.getU()
+            alphabet.pointArrays = AlphabetUtils.getUPoints()
+        case "p":
+            alphabet.path = AlphabetUtils.getP()
+            alphabet.pointArrays = AlphabetUtils.getPPoints()
+        case "q":
+            alphabet.path = AlphabetUtils.getQ()
+            alphabet.pointArrays = AlphabetUtils.getQPoints()
+        case "r":
+            alphabet.path = AlphabetUtils.getR()
+            alphabet.pointArrays = AlphabetUtils.getRPoints()
+        case "s":
+            alphabet.path = AlphabetUtils.getS()
+            alphabet.pointArrays = AlphabetUtils.getSPoints()
+        case "t":
+            alphabet.path = AlphabetUtils.getT()
+            alphabet.pointArrays = AlphabetUtils.getTPoints()
+        case "v":
+            alphabet.path = AlphabetUtils.getV()
+            alphabet.pointArrays = AlphabetUtils.getVPoints()
+        case "x":
+            alphabet.path = AlphabetUtils.getX()
+            alphabet.pointArrays = AlphabetUtils.getXPoints()
+        case "y":
+            alphabet.path = AlphabetUtils.getY()
+            alphabet.pointArrays = AlphabetUtils.getYPoints()
         default:
             print("")
         }

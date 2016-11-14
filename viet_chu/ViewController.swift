@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         tmpPath.apply(trans2)
         let trans1 = CGAffineTransform(translationX: originalView.frame.width / 2 - tmpPath.bounds.midX, y: originalView.frame.height / 2 - tmpPath.bounds.midY)
         tmpPath.apply(trans1)
-        originalView.image = convertPathsToImage(paths: [tmpPath])
+        originalView.image = ViewController.convertPathsToImage(paths: [tmpPath])
         originalView.contentMode = .topLeft
         leftMenu.addSubview(originalView)
         // Logo game
@@ -128,7 +128,7 @@ class ViewController: UIViewController {
     }
     
     // convert path to image
-    func convertPathsToImage(paths: [UIBezierPath]) -> UIImage
+    class func convertPathsToImage(paths: [UIBezierPath]) -> UIImage
     {
         let imageWidth: CGFloat = 200
         let imageHeight: CGFloat  = 200
