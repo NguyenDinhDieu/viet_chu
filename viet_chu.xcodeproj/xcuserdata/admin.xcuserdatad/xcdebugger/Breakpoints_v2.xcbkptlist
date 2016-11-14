@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "299"
             endingLineNumber = "299"
-            landmarkName = "getU()"
+            landmarkName = "getUPoints()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
