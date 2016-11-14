@@ -1,0 +1,146 @@
+//
+//  DrawView.swift
+//  viet_chu
+//
+//  Created by Tri on 11/14/16.
+//  Copyright © 2016 efode. All rights reserved.
+//
+
+import UIKit
+
+class DrawView: UIView {
+    var lines = [Line]()
+    var lastPoint: CGPoint!
+    var colorFlag = false
+    var originalPath: CGPath!
+    var drawPath = UIBezierPath()
+    var pointArray = [CGPoint]()
+    var pointArrays = [[CGPoint]]()
+    var label = UILabel()
+    
+    func addLabel() {
+        label.text = "0,0"
+        label.adjustsFontSizeToFitWidth = true
+        label.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
+        self.addSubview(label)
+    }
+    
+    
+    
+    func setOriginal(_ path: CGPath){
+        originalPath = path
+    }
+    
+    func checkComplete() {
+        //        let drawP = drawPath.cgPath
+    }
+    
+    var firstPoint: CGPoint!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        firstPoint = touches.first?.location(in: self) // TODO
+        lastPoint = touches.first?.location(in: self)
+        if drawPath.contains(lastPoint) {
+            print("exist")
+        }
+        drawPath.move(to: lastPoint)
+        drawPath.addLine(to: lastPoint)
+        let line = Line(lastPoint, lastPoint!)
+        lines.append(line)
+        label.text = lastPoint.debugDescription
+        print(lastPoint)
+        self.setNeedsDisplay()
+        print(lastPoint)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let newPoint = touches.first?.location(in: self)
+        label.text = newPoint!.debugDescription
+        //        if !(newPoint?.equalTo(lastPoint))! {
+        //            let line = Line(lastPoint, newPoint!)
+        //            drawPath.addLine(to: newPoint!)
+        //            lines.append(line)
+        //            lastPoint = newPoint
+        //            self.setNeedsDisplay()
+        //        }
+        let line = Line(lastPoint, newPoint!)
+        drawPath.addLine(to: newPoint!)
+        lines.append(line)
+        lastPoint = newPoint
+        
+        if pointArrays.count > 0 {
+            pointArray = pointArrays[0]
+            if pointArray.count > 0 {
+                let point = pointArray[0]
+                if compareTwoPoint(point, newPoint!) {
+                    print("Removed \(point)")
+                    pointArray.remove(at: 0)
+                    pointArrays[0] = pointArray
+                    
+                }
+            }
+            if pointArray.count == 0 {
+                print("Remove array")
+                pointArrays.remove(at: 0)
+            }
+        }
+        
+        if pointArrays.count == 0 {
+            print("Completed")
+        }
+        
+        self.setNeedsDisplay()
+        
+    }
+    
+    func compareTwoPoint(_ point1: CGPoint, _ point2: CGPoint) -> Bool {
+        if abs(point1.x - point2.x) < 10 && abs(point1.y - point2.y) < 10 {
+            print("Passed")
+            return true
+        }
+        return false
+    }
+    
+    override func draw(_ rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        context!.beginPath()
+        context!.setLineCap(.round)
+        //        context!.setLineJoin(.bevel)
+        
+        if originalPath != nil {
+            context!.setLineWidth(1)
+            context!.setLineDash(phase: 1, lengths: [7,7])
+            context?.addPath(originalPath)
+            context!.strokePath()
+        }
+        context!.setLineWidth(5)
+        context!.setLineDash(phase: 1, lengths: [])
+        context!.setStrokeColor(UIColor.blue.cgColor)
+        let points = pointArrays.first
+        if points != nil {
+            for point in points! {
+                context!.move(to: point)
+                context!.addLine(to: point)
+                context!.strokePath()
+            }
+        }
+        // display only 1 point each time
+        //        let point = points?.first
+        //        if point != nil {
+        //                            context!.move(to: point!)
+        //                            context!.addLine(to: point!)
+        //                            context!.strokePath()
+        //        }
+        context!.setStrokeColor(UIColor.red.cgColor)
+        
+        context!.setLineWidth(20)
+        for line in lines {
+            context!.move(to: line.startPoint)
+            context!.addLine(to: line.endPoint)
+            //            if colorFlag { //                context!.setStrokeColor(UIColor.red.cgColor) //                colorFlag = !colorFlag //            } else { //                context!.setStrokeColor(UIColor.yellow.cgColor) //                colorFlag = !colorFlag //            }
+        }
+        context!.strokePath()
+        
+    }
+    
+}
