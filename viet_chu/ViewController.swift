@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var rightMenu: UIView! // right menu
     let drawView = DrawView() // draw view
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         drawView.frame = CGRect(x: self.view.frame.width * 2 / 10, y: 0, width: self.view.frame.width * 6 / 10, height: self.view.frame.height)
@@ -101,8 +103,8 @@ class ViewController: UIViewController {
     func createDrawView() {
         print("create new draw view")
         drawView.lines = [Line]()
-        path = Alphabet.getM() // TODO get from an array
-        drawView.pointArrays = Alphabet.getMPoints() // TODO get from an array
+        path = AlphabetUtils.getM() // TODO get from an array
+        drawView.pointArrays = AlphabetUtils.getMPoints() // TODO get from an array
         let transX = drawView.frame.width / 2 - path.bounds.midX
         let transY = drawView.frame.height / 2 - path.bounds.midY
         let trans = CGAffineTransform(translationX: transX, y: transY)
