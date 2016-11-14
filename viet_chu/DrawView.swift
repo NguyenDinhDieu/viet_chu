@@ -17,6 +17,8 @@ class DrawView: UIView {
     var pointArray = [CGPoint]()
     var pointArrays = [[CGPoint]]()
     var label = UILabel()
+    var arrows = [UIBezierPath]()
+    var isCompleted = false
     
     func addLabel() {
         label.text = "0,0"
@@ -49,7 +51,7 @@ class DrawView: UIView {
         lines.append(line)
         label.text = lastPoint.debugDescription
         print(lastPoint)
-        self.setNeedsDisplay()
+//        self.setNeedsDisplay()
         print(lastPoint)
     }
     
@@ -82,15 +84,28 @@ class DrawView: UIView {
             if pointArray.count == 0 {
                 print("Remove array")
                 pointArrays.remove(at: 0)
+                arrows.remove(at: 0)
             }
         }
         
         if pointArrays.count == 0 {
+            isCompleted = true
             print("Completed")
         }
         
         self.setNeedsDisplay()
         
+    }
+    
+    var conLabel = UILabel()
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if isCompleted {
+            conLabel.frame = CGRect(x: 0, y: 10, width: self.frame.width, height: 20)
+            conLabel.textAlignment = .center
+            conLabel.textColor = UIColor.blue
+            conLabel.text = "Đúng rồi"
+            self.addSubview(conLabel)
+        }
     }
     
     func compareTwoPoint(_ point1: CGPoint, _ point2: CGPoint) -> Bool {
@@ -113,8 +128,23 @@ class DrawView: UIView {
             context?.addPath(originalPath)
             context!.strokePath()
         }
+        context!.setLineWidth(2)
+        context!.setLineDash(phase: 2, lengths: [])
+        context!.setStrokeColor(UIColor.yellow.cgColor)
+        let arrow = arrows.first
+        if arrow != nil {
+            //            print(arrow)
+            UIColor.yellow.setFill()
+            arrow?.fill()
+            context!.addPath((arrow?.cgPath)!)
+            //            let xxPath = UIBezierPath.arrow(from: CGPoint(x: 0, y: 0), to: CGPoint(x: 100, y: 100), tailWidth: 1, headWidth: 10, headLength: 10)
+            //            context!.addPath(xxPath.cgPath)
+            context!.strokePath()
+        }
+
+        
+        
         context!.setLineWidth(5)
-        context!.setLineDash(phase: 1, lengths: [])
         context!.setStrokeColor(UIColor.blue.cgColor)
         let points = pointArrays.first
         if points != nil {
