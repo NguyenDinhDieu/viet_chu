@@ -15,6 +15,8 @@
 		115E26A81DD3070F00A4D3E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115E26A61DD3070F00A4D3E5 /* LaunchScreen.storyboard */; };
 		119EF2C71DD971A2007029DF /* Alphabet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2C61DD971A2007029DF /* Alphabet.swift */; };
 		119EF2C91DD99110007029DF /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2C81DD99110007029DF /* DrawView.swift */; };
+		119EF2CB1DD9956B007029DF /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2CA1DD9956B007029DF /* Line.swift */; };
+		119EF2CD1DD9973A007029DF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2CC1DD9973A007029DF /* Extension.swift */; };
 		11A247271DD31BAF006104F2 /* SVGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A247261DD31BAF006104F2 /* SVGPath.swift */; };
 		11A694CC1DD57267006CDF27 /* Monaco.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 11A694CB1DD57267006CDF27 /* Monaco.dfont */; };
 		11F65A751DD466E400B47A46 /* HLHOCTRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 11F65A741DD466E400B47A46 /* HLHOCTRO.TTF */; };
@@ -32,6 +34,8 @@
 		115E26A91DD3070F00A4D3E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		119EF2C61DD971A2007029DF /* Alphabet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alphabet.swift; sourceTree = "<group>"; };
 		119EF2C81DD99110007029DF /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		119EF2CA1DD9956B007029DF /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		119EF2CC1DD9973A007029DF /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		11A247251DD31BAF006104F2 /* SVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPath.h; sourceTree = "<group>"; };
 		11A247261DD31BAF006104F2 /* SVGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGPath.swift; sourceTree = "<group>"; };
 		11A694CB1DD57267006CDF27 /* Monaco.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Monaco.dfont; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				115E26A11DD3070F00A4D3E5 /* viet_chu.xcdatamodeld */,
 				119EF2C61DD971A2007029DF /* Alphabet.swift */,
 				119EF2C81DD99110007029DF /* DrawView.swift */,
+				119EF2CA1DD9956B007029DF /* Line.swift */,
+				119EF2CC1DD9973A007029DF /* Extension.swift */,
 			);
 			path = viet_chu;
 			sourceTree = "<group>";
@@ -168,7 +174,9 @@
 				119EF2C91DD99110007029DF /* DrawView.swift in Sources */,
 				11A247271DD31BAF006104F2 /* SVGPath.swift in Sources */,
 				115E26A31DD3070F00A4D3E5 /* viet_chu.xcdatamodeld in Sources */,
+				119EF2CB1DD9956B007029DF /* Line.swift in Sources */,
 				115E269B1DD3070F00A4D3E5 /* AppDelegate.swift in Sources */,
+				119EF2CD1DD9973A007029DF /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

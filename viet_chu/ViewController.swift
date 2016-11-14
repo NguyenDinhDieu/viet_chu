@@ -12,28 +12,16 @@ import CoreText
 
 class ViewController: UIViewController {
     
-    let square = UIView()
-    let squarePath = UIBezierPath()
-    
-    var timer = Timer()
-    
-    var drawPath = UIBezierPath()
-    var path = UIBezierPath()
-    let shapeLayer = CAShapeLayer()
-    let drawShape = CAShapeLayer()
-    var view1 = UIImageView()
-    var originalPath : UIBezierPath!
-    var leftMenu: UIView!
-    var rightMenu: UIView!
-    let drawView = DrawView()
+    var path = UIBezierPath() // character's path
+    var leftMenu: UIView! // left menu
+    var rightMenu: UIView! // right menu
+    let drawView = DrawView() // draw view
     
     override func viewDidLoad() {
         super.viewDidLoad()
         drawView.frame = CGRect(x: self.view.frame.width * 2 / 10, y: 0, width: self.view.frame.width * 6 / 10, height: self.view.frame.height)
         self.createDrawView()
         self.view.addSubview(drawView)
-        
-        
         
         // create left menu layout
         leftMenu = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width * 2 / 10, height: self.view.frame.height))
@@ -109,21 +97,6 @@ class ViewController: UIViewController {
         self.view.addSubview(rightMenu)
     }
     
-    var pathArray = [UIBezierPath]()
-    var timerCount:Float = 0.0
-    
-    // test update time
-    func updateTime() {
-        timerCount = timerCount + 0.1
-        print(timerCount)
-        if timerCount > 5 {
-            timer.invalidate()
-            print(squarePath)
-        } else {
-            squarePath.addLine(to: square.frame.origin)
-        }
-    }
-    
     // create draw view
     func createDrawView() {
         print("create new draw view")
@@ -177,46 +150,6 @@ class ViewController: UIViewController {
     }
 }
 
-
-class Line {
-    var startPoint: CGPoint!
-    var endPoint: CGPoint!
-    init(_ start: CGPoint, _ end: CGPoint) {
-        startPoint = start
-        endPoint = end
-    }
-}
-
-
-extension UIBezierPath {
-    
-    class func arrow(from start: CGPoint, to end: CGPoint, tailWidth: CGFloat, headWidth: CGFloat, headLength: CGFloat) -> Self {
-        let length = hypot(end.x - start.x, end.y - start.y)
-        let tailLength = length - headLength
-        
-        func p(_ x: CGFloat, _ y: CGFloat) -> CGPoint { return CGPoint(x: x, y: y) }
-        let points: [CGPoint] = [
-            p(0, tailWidth / 2),
-            p(tailLength, tailWidth / 2),
-            p(tailLength, headWidth / 2),
-            p(length, 0),
-            p(tailLength, -headWidth / 2),
-            p(tailLength, -tailWidth / 2),
-            p(0, -tailWidth / 2)
-        ]
-        
-        let cosine = (end.x - start.x) / length
-        let sine = (end.y - start.y) / length
-        let transform = CGAffineTransform(a: cosine, b: sine, c: -sine, d: cosine, tx: start.x, ty: start.y)
-        
-        let path = CGMutablePath()
-        path.addLines(between: points, transform: transform )
-//        path.addLines(between: points)
-        path.closeSubpath()
-        return self.init(cgPath: path)
-    }
-    
-}
 
 
 
