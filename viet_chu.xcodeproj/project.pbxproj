@@ -13,15 +13,16 @@
 		115E26A31DD3070F00A4D3E5 /* viet_chu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 115E26A11DD3070F00A4D3E5 /* viet_chu.xcdatamodeld */; };
 		115E26A51DD3070F00A4D3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 115E26A41DD3070F00A4D3E5 /* Assets.xcassets */; };
 		115E26A81DD3070F00A4D3E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115E26A61DD3070F00A4D3E5 /* LaunchScreen.storyboard */; };
-		119EF2C71DD971A2007029DF /* AlphabetUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2C61DD971A2007029DF /* AlphabetUtils.swift */; };
-		119EF2C91DD99110007029DF /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2C81DD99110007029DF /* DrawView.swift */; };
-		119EF2CB1DD9956B007029DF /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2CA1DD9956B007029DF /* Line.swift */; };
-		119EF2CD1DD9973A007029DF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2CC1DD9973A007029DF /* Extension.swift */; };
-		119EF2CF1DD99E96007029DF /* Alphabet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2CE1DD99E96007029DF /* Alphabet.swift */; };
+		119EF2D51DD9C88E007029DF /* Alphabet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2D01DD9C88E007029DF /* Alphabet.swift */; };
+		119EF2D61DD9C88E007029DF /* AlphabetUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2D11DD9C88E007029DF /* AlphabetUtils.swift */; };
+		119EF2D71DD9C88E007029DF /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2D21DD9C88E007029DF /* DrawView.swift */; };
+		119EF2D81DD9C88E007029DF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2D31DD9C88E007029DF /* Extension.swift */; };
+		119EF2D91DD9C88E007029DF /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EF2D41DD9C88E007029DF /* Line.swift */; };
 		11A247271DD31BAF006104F2 /* SVGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A247261DD31BAF006104F2 /* SVGPath.swift */; };
 		11A694CC1DD57267006CDF27 /* Monaco.dfont in Resources */ = {isa = PBXBuildFile; fileRef = 11A694CB1DD57267006CDF27 /* Monaco.dfont */; };
 		11F65A751DD466E400B47A46 /* HLHOCTRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 11F65A741DD466E400B47A46 /* HLHOCTRO.TTF */; };
 		11F65A771DD46F9100B47A46 /* VNARIS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 11F65A761DD46F9100B47A46 /* VNARIS.TTF */; };
+		84298F861DD9700600145796 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84298F851DD9700600145796 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,16 +34,17 @@
 		115E26A41DD3070F00A4D3E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		115E26A71DD3070F00A4D3E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		115E26A91DD3070F00A4D3E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		119EF2C61DD971A2007029DF /* AlphabetUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetUtils.swift; sourceTree = "<group>"; };
-		119EF2C81DD99110007029DF /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
-		119EF2CA1DD9956B007029DF /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		119EF2CC1DD9973A007029DF /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		119EF2CE1DD99E96007029DF /* Alphabet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alphabet.swift; sourceTree = "<group>"; };
+		119EF2D01DD9C88E007029DF /* Alphabet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alphabet.swift; sourceTree = "<group>"; };
+		119EF2D11DD9C88E007029DF /* AlphabetUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetUtils.swift; sourceTree = "<group>"; };
+		119EF2D21DD9C88E007029DF /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		119EF2D31DD9C88E007029DF /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		119EF2D41DD9C88E007029DF /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		11A247251DD31BAF006104F2 /* SVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPath.h; sourceTree = "<group>"; };
 		11A247261DD31BAF006104F2 /* SVGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGPath.swift; sourceTree = "<group>"; };
 		11A694CB1DD57267006CDF27 /* Monaco.dfont */ = {isa = PBXFileReference; lastKnownFileType = file; path = Monaco.dfont; sourceTree = "<group>"; };
 		11F65A741DD466E400B47A46 /* HLHOCTRO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = HLHOCTRO.TTF; sourceTree = "<group>"; };
 		11F65A761DD46F9100B47A46 /* VNARIS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = VNARIS.TTF; sourceTree = "<group>"; };
+		84298F851DD9700600145796 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,11 @@
 		115E26991DD3070F00A4D3E5 /* viet_chu */ = {
 			isa = PBXGroup;
 			children = (
+				119EF2D01DD9C88E007029DF /* Alphabet.swift */,
+				119EF2D11DD9C88E007029DF /* AlphabetUtils.swift */,
+				119EF2D21DD9C88E007029DF /* DrawView.swift */,
+				119EF2D31DD9C88E007029DF /* Extension.swift */,
+				119EF2D41DD9C88E007029DF /* Line.swift */,
 				115E269A1DD3070F00A4D3E5 /* AppDelegate.swift */,
 				115E269C1DD3070F00A4D3E5 /* ViewController.swift */,
 				11A694CB1DD57267006CDF27 /* Monaco.dfont */,
@@ -87,11 +94,7 @@
 				115E26A61DD3070F00A4D3E5 /* LaunchScreen.storyboard */,
 				115E26A91DD3070F00A4D3E5 /* Info.plist */,
 				115E26A11DD3070F00A4D3E5 /* viet_chu.xcdatamodeld */,
-				119EF2C61DD971A2007029DF /* AlphabetUtils.swift */,
-				119EF2C81DD99110007029DF /* DrawView.swift */,
-				119EF2CA1DD9956B007029DF /* Line.swift */,
-				119EF2CC1DD9973A007029DF /* Extension.swift */,
-				119EF2CE1DD99E96007029DF /* Alphabet.swift */,
+				84298F851DD9700600145796 /* MenuViewController.swift */,
 			);
 			path = viet_chu;
 			sourceTree = "<group>";
@@ -172,15 +175,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				119EF2D81DD9C88E007029DF /* Extension.swift in Sources */,
+				119EF2D51DD9C88E007029DF /* Alphabet.swift in Sources */,
 				115E269D1DD3070F00A4D3E5 /* ViewController.swift in Sources */,
-				119EF2C71DD971A2007029DF /* AlphabetUtils.swift in Sources */,
-				119EF2C91DD99110007029DF /* DrawView.swift in Sources */,
+				119EF2D71DD9C88E007029DF /* DrawView.swift in Sources */,
+				84298F861DD9700600145796 /* MenuViewController.swift in Sources */,
 				11A247271DD31BAF006104F2 /* SVGPath.swift in Sources */,
 				115E26A31DD3070F00A4D3E5 /* viet_chu.xcdatamodeld in Sources */,
-				119EF2CB1DD9956B007029DF /* Line.swift in Sources */,
-				119EF2CF1DD99E96007029DF /* Alphabet.swift in Sources */,
 				115E269B1DD3070F00A4D3E5 /* AppDelegate.swift in Sources */,
-				119EF2CD1DD9973A007029DF /* Extension.swift in Sources */,
+				119EF2D61DD9C88E007029DF /* AlphabetUtils.swift in Sources */,
+				119EF2D91DD9C88E007029DF /* Line.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +313,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "efode.viet-chu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,7 +326,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "efode.viet-chu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
