@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MenuViewController: UIViewController {
     
-    var cellGameArray = Array<Array<CellGame>>()
+    var alphabetArray = [Alphabet]()
     
     var characterArray = [String]()
     
@@ -19,57 +20,97 @@ class MenuViewController: UIViewController {
     var rowNo = 2 // default row number
     
     var boardGame = UIImageView()
-
+    
+    var selectedIndex = 0
+    
+    let synthesizer = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        synthesizer.stopSpeaking(at: .immediate)
+        // setup font
+        let cfURL = Bundle.main.url(forResource: "Schoolnet5HN", withExtension: "ttf") as! CFURL
+        CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
+        let font = UIFont(name: "Schoolnet 5H", size: 40)!
         
         //load character
-        var charString: String = "aăâbcdđeêghiklmnoôơpqrstuưvxy"
-        for i in 0...24 {
-            let r = charString.index(charString.startIndex, offsetBy: i)
-            let sub = charString[r]
-            print("\(sub)")
+        let vietnameseTable: String = "aăâbcdđeêghiklmnoôơpqrstuưvxy"
+        for i in 0...28 {
+            let r = vietnameseTable.index(vietnameseTable.startIndex, offsetBy: i)
+            let sub = vietnameseTable[r]
             characterArray.append("\(sub)")
 //            characterArray[i] = AlphabetUtils.getAlphabet(unicode:"\(charString[r])")
         }
 
         // Do any additional setup after loading the view.
-        boardGame.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width * 0.8 , height: (UIScreen.main.bounds.height * 0.5))
-        cellGameArray = Array(repeating: Array(repeating : CellGame(), count: rowNo), count: colNo)
-        for i in 1...colNo {
-            for j in 1...rowNo {
-                let tmpImageView = CellGame()
-                tmpImageView.frame = CGRect(x: CGFloat(i - 1) * (boardGame.frame.width / CGFloat(colNo)) , y: CGFloat(j - 1) * (boardGame.frame.height / CGFloat(rowNo)), width: boardGame.frame.width / CGFloat(colNo), height: boardGame.frame.height / CGFloat(rowNo))
-                    tmpImageView.isExclusiveTouch = true
-                tmpImageView.layer.borderWidth = 1
-                tmpImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
-                tmpImageView.character = characterArray[(j - 1) * (colNo - 1) + i - 1]
-                
-                let tmpPath = AlphabetUtils.getAlphabet(unicode: characterArray[i]).path!
-                let widthRatio = (boardGame.frame.width / CGFloat(colNo))/tmpPath.bounds.width
-                let heightRatio = (boardGame.frame.height / CGFloat(rowNo))/tmpPath.bounds.height
-                var scaleRatio: CGFloat!
-                if widthRatio > heightRatio {
-                    scaleRatio = heightRatio
-                } else {
-                    scaleRatio = widthRatio
-                }
-                let trans2 = CGAffineTransform(scaleX: scaleRatio, y: scaleRatio)
-                tmpPath.apply(trans2)
-//                let trans1 = CGAffineTransform(translationX: originalView.frame.width / 2 - tmpPath.bounds.midX, y: originalView.frame.height / 2 - tmpPath.bounds.midY)
-//                tmpPath.apply(trans1)
-                
-                tmpImageView.image = ViewController.convertPathsToImage(paths: [tmpPath])
-                
-                
-                
-                cellGameArray[i-1][j-1] = tmpImageView
-                boardGame.addSubview(tmpImageView)
-                self.boardGame.center = self.view.center
-            }
-        }
+        boardGame.frame = CGRect(x: 50, y: 50, width: UIScreen.main.bounds.width * 0.8 , height: (UIScreen.main.bounds.height * 0.8))
+        let charEachRow:CGFloat = 8
+        var rowCount:CGFloat = 1
+        var colCount:CGFloat = 1
+//        let width = (boardGame.frame.width) / charEachRow
+        let width = (boardGame.frame.width) / charEachRow
+        let height:CGFloat = 80
         
+        for i in 0...28 {
+            
+            let alphabetBtn = UIButton()
+            
+            alphabetBtn.frame = CGRect(x: (colCount - 1) * width, y: height * (rowCount - 1) , width: width, height: height)
+//            alphabetBtn.layer.borderWidth = 3
+//            alphabetBtn.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
+            let alphabet = AlphabetUtils.getAlphabet(unicode: characterArray[i])
+            var tmpPath = alphabet.path
+//            let widthRatio = (width - 5) / tmpPath.bounds.width
+//            let heightRatio = (height - 5) / tmpPath.bounds.height
+//            let cellHeight:CGFloat = 25
+//            var scaleRatio: CGFloat!
+//            if widthRatio > heightRatio {
+//                scaleRatio = heightRatio
+//            } else {
+//                scaleRatio = widthRatio
+//            }
+//            let trans2 = CGAffineTransform(scaleX: 1/8, y: widthRatio)
+//            tmpPath.apply(trans2)
+//            let trans1 = CGAffineTransform(translationX: width/2 - tmpPath.bounds.midX, y: 50 - tmpPath.bounds.maxY)
+//            tmpPath.apply(trans1)
+            
+            
+//            alphabetBtn.setImage(ViewController.convertPathsToImage(paths: [tmpPath]), for: .normal)
+//            alphabetBtn.contentMode =
+            
+            if i != 20 {
+                alphabetBtn.titleLabel!.font = font
+            } else {
+                let cfURL1 = Bundle.main.url(forResource: "HLHOCTRO", withExtension: "TTF") as! CFURL
+                CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
+                let font1 = UIFont(name: "HL hoctro", size: 45)!
+                alphabetBtn.titleLabel!.font = font1
+            }
+            alphabetBtn.titleLabel?.textAlignment = .center
+            alphabetBtn.titleLabel?.frame = alphabetBtn.frame
+            let btnImage1 = UIImage(named: "button1")
+            let btnImage2 = UIImage(named: "button2")
+            alphabetBtn.setBackgroundImage(btnImage1, for: .normal)
+            alphabetBtn.setBackgroundImage(btnImage2, for: .selected)
+            alphabetBtn.setTitle(characterArray[i], for: .normal)
+            alphabetBtn.setTitleColor(UIColor.red, for: .normal)
+//            alphabetBtn.addTarget(self, action: #selector, for: .touchUpInside)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.btnPressed(_:)))
+            alphabetBtn.addGestureRecognizer(tapGesture)
+            alphabetBtn.isUserInteractionEnabled = true
+//            alphabetBtn.isSelected = true
+            alphabetBtn.tag = i
+            alphabetArray.append(alphabet)
+            boardGame.addSubview(alphabetBtn)
+            colCount += 1
+            if colCount > charEachRow {
+                rowCount += 1
+                colCount = 1
+            }
+            
+        }
+        boardGame.center = CGPoint(x: self.view.frame.midX, y: boardGame.center.y)
+        boardGame.isUserInteractionEnabled = true
         self.view.addSubview(boardGame)
         
         
@@ -88,10 +129,10 @@ class MenuViewController: UIViewController {
         self.view.addSubview(logo)
         
         //play button
-        let playBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 80, y: UIScreen.main.bounds.height * 0.15 , width: 80, height: 30))
+        let playBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 80, y: UIScreen.main.bounds.height * 0.05 , width: 80, height: 30))
         playBtn.setTitle("Viết chữ", for: .normal)
         playBtn.backgroundColor = UIColor.purple
-        //playBtn.addTarget(self, action: #selector(self.playGame), for: .touchUpInside)
+        playBtn.addTarget(self, action: #selector(self.playBtnPressed), for: .touchUpInside)
         self.view.addSubview(playBtn)
         
         //back button
@@ -101,12 +142,33 @@ class MenuViewController: UIViewController {
         self.view.addSubview(backBtn)
     }
     
+    func btnPressed(_ sender: UITapGestureRecognizer) {
+        print("pressed")
+        for subView in boardGame.subviews {
+            let tmpButton = subView as! UIButton
+            tmpButton.isSelected = false
+        }
+        let button  = sender.view as! UIButton
+        button.isSelected = true
+        selectedIndex = button.tag
+        
+        // talk
+        let utterance = AVSpeechUtterance(string: (button.titleLabel?.text)!)
+        utterance.voice = AVSpeechSynthesisVoice(language: "vn")
+        synthesizer.stopSpeaking(at: .immediate)
+        synthesizer.speak(utterance)
+    }
     
+    func playBtnPressed() {
+        performSegue(withIdentifier: "DrawSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                if let destination = segue.destination as? ViewController {
+                    destination.selectedIndex = self.selectedIndex
+                    destination.alphabetArray = self.alphabetArray
+                }
+    }
     
 }
 
-class CellGame: UIImageView {
-    var character: String?
-    
-    
-}

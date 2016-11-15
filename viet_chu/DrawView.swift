@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DrawView: UIView {
+    var character: String!
     var lines = [Line]()
     var lastPoint: CGPoint!
     var colorFlag = false
@@ -19,6 +21,7 @@ class DrawView: UIView {
     var label = UILabel()
     var arrows = [UIBezierPath]()
     var isCompleted = false
+    let synthesizer = AVSpeechSynthesizer()
     
     func addLabel() {
         label.text = "0,0"
@@ -27,14 +30,8 @@ class DrawView: UIView {
         self.addSubview(label)
     }
     
-    
-    
     func setOriginal(_ path: CGPath){
         originalPath = path
-    }
-    
-    func checkComplete() {
-        //        let drawP = drawPath.cgPath
     }
     
     var firstPoint: CGPoint!
@@ -51,8 +48,7 @@ class DrawView: UIView {
         lines.append(line)
         label.text = lastPoint.debugDescription
         print(lastPoint)
-//        self.setNeedsDisplay()
-        print(lastPoint)
+        self.setNeedsDisplay()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,13 +80,21 @@ class DrawView: UIView {
             if pointArray.count == 0 {
                 print("Remove array")
                 pointArrays.remove(at: 0)
-                arrows.remove(at: 0)
+                if !arrows.isEmpty {
+                    arrows.remove(at: 0)
+                }
+                
             }
         }
         
         if pointArrays.count == 0 {
             isCompleted = true
             print("Completed")
+            // talk
+            let utterance = AVSpeechUtterance(string: character)
+            utterance.voice = AVSpeechSynthesisVoice(language: "vn")
+            synthesizer.stopSpeaking(at: .immediate)
+            synthesizer.speak(utterance)
         }
         
         self.setNeedsDisplay()
@@ -146,31 +150,29 @@ class DrawView: UIView {
         
         context!.setLineWidth(5)
         context!.setStrokeColor(UIColor.blue.cgColor)
-        let points = pointArrays.first
+        var points = pointArrays.first
         if points != nil {
+            context!.setStrokeColor(UIColor.yellow.cgColor)
+            let fPoint = points?.remove(at: 0)
+            context!.move(to: fPoint!)
+            context!.addLine(to: fPoint!)
+            context!.strokePath()
+            context!.setStrokeColor(UIColor.blue.cgColor)
             for point in points! {
                 context!.move(to: point)
                 context!.addLine(to: point)
                 context!.strokePath()
             }
         }
-        // display only 1 point each time
-        //        let point = points?.first
-        //        if point != nil {
-        //                            context!.move(to: point!)
-        //                            context!.addLine(to: point!)
-        //                            context!.strokePath()
-        //        }
+        
         context!.setStrokeColor(UIColor.red.cgColor)
         
         context!.setLineWidth(20)
         for line in lines {
             context!.move(to: line.startPoint)
             context!.addLine(to: line.endPoint)
-            //            if colorFlag { //                context!.setStrokeColor(UIColor.red.cgColor) //                colorFlag = !colorFlag //            } else { //                context!.setStrokeColor(UIColor.yellow.cgColor) //                colorFlag = !colorFlag //            }
         }
         context!.strokePath()
-        
     }
     
 }

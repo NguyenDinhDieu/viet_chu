@@ -7,15 +7,18 @@
 //
 
 import UIKit
-
 import CoreText
+import AVFoundation
 
 class ViewController: UIViewController {
     
-    var path = UIBezierPath() // character's path
     var leftMenu: UIView! // left menu
     var rightMenu: UIView! // right menu
     let drawView = DrawView() // draw view
+    var originalView: UIImageView!
+    var alphabetArray = [Alphabet]()
+    var selectedIndex = 0
+    let synthesizer = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,25 +35,11 @@ class ViewController: UIViewController {
         label.textColor = UIColor.purple
         label.text = "Tập viết chữ"
         leftMenu.addSubview(label)
+        
         // Image chữ cái mẫu
-        let originalView = UIImageView(frame: CGRect(x: 5, y: 40, width: leftMenu.frame.width - 10, height: leftMenu.frame.width - 10))
-//        originalView.center.applying(CGAffineTransform(translationX: leftMenu.center.x - originalView.center.x, y: 0))
+        originalView = UIImageView(frame: CGRect(x: 5, y: 40, width: leftMenu.frame.width - 10, height: leftMenu.frame.width - 10))
         originalView.backgroundColor = UIColor.white
-        let tmpPath = path
-        let widthRatio = (originalView.frame.width - 10) / tmpPath.bounds.width
-        let heightRatio = (originalView.frame.height - 10) / tmpPath.bounds.height
-        var scaleRatio: CGFloat!
-        if widthRatio > heightRatio {
-            scaleRatio = heightRatio
-        } else {
-            scaleRatio = widthRatio
-        }
-        let trans2 = CGAffineTransform(scaleX: scaleRatio, y: scaleRatio)
-        tmpPath.apply(trans2)
-        let trans1 = CGAffineTransform(translationX: originalView.frame.width / 2 - tmpPath.bounds.midX, y: originalView.frame.height / 2 - tmpPath.bounds.midY)
-        tmpPath.apply(trans1)
-        originalView.image = ViewController.convertPathsToImage(paths: [tmpPath])
-        originalView.contentMode = .topLeft
+        createOriginalView()
         leftMenu.addSubview(originalView)
         // Logo game
         let logoGame = UILabel(frame: CGRect(x: 0, y: leftMenu.frame.height - 50, width: leftMenu.frame.width, height: 40 ))
@@ -75,26 +64,59 @@ class ViewController: UIViewController {
         let nextBtn = UIButton(frame: CGRect(x: 0, y: 10 + resetBtn.frame.maxY, width: rightMenu.frame.width, height: 40 ))
         nextBtn.setTitle("Chữ kế tiếp", for: .normal)
         nextBtn.backgroundColor = UIColor.red
+        nextBtn.addTarget(self, action: #selector(self.nextBtnPressed) , for: .touchUpInside)
         rightMenu.addSubview(nextBtn)
         
         // button Chữ liền trước
         let prevBtn = UIButton(frame: CGRect(x: 0, y: 10 + nextBtn.frame.maxY, width: rightMenu.frame.width, height: 40 ))
         prevBtn.setTitle("Chữ liền trước", for: .normal)
         prevBtn.backgroundColor = UIColor.red
+        prevBtn.addTarget(self, action: #selector(self.prevBtnPressed) , for: .touchUpInside)
         rightMenu.addSubview(prevBtn)
         
         // button Phát âm
         let talkBtn = UIButton(frame: CGRect(x: 0, y: 40 + prevBtn.frame.maxY, width: rightMenu.frame.width, height: 40 ))
         talkBtn.setTitle("Phát âm", for: .normal)
         talkBtn.backgroundColor = UIColor.red
+        talkBtn.addTarget(self, action: #selector(self.talkBtnPressed) , for: .touchUpInside)
         rightMenu.addSubview(talkBtn)
         
         // button Quay lại
         let backBtn = UIButton(frame: CGRect(x: 0, y: rightMenu.frame.height - 50 , width: rightMenu.frame.width, height: 40 ))
         backBtn.setTitle("Quay lại", for: .normal)
         backBtn.backgroundColor = UIColor.red
+        backBtn.addTarget(self, action: #selector(self.backBtnPressed) , for: .touchUpInside)
         rightMenu.addSubview(backBtn)
         self.view.addSubview(rightMenu)
+    }
+    
+    func nextBtnPressed() {
+        if selectedIndex < alphabetArray.count - 1 {
+            selectedIndex += 1
+        }
+        createDrawView()
+        createOriginalView()
+    }
+    
+    func prevBtnPressed() {
+        if selectedIndex > 0 {
+            selectedIndex -= 1
+        }
+        createDrawView()
+        createOriginalView()
+    }
+    
+    func talkBtnPressed() {
+        // talk
+        let utterance = AVSpeechUtterance(string: alphabetArray[selectedIndex].unicode!)
+        utterance.voice = AVSpeechSynthesisVoice(language: "vn")
+        synthesizer.stopSpeaking(at: .immediate)
+        synthesizer.speak(utterance)
+        
+    }
+    
+    func backBtnPressed() {
+        dismiss(animated: true, completion: nil)
     }
     
     // create draw view
@@ -102,17 +124,32 @@ class ViewController: UIViewController {
         print("create new draw view")
         drawView.conLabel.removeFromSuperview()
         drawView.isCompleted = false
+        drawView.character = alphabetArray[selectedIndex].unicode
         drawView.lines = [Line]()
-        path = AlphabetUtils.getA() // TODO get from an array
-        drawView.pointArrays = AlphabetUtils.getAPoints() // TODO get from an array
+        let tmpPath = UIBezierPath()
+        tmpPath.append(alphabetArray[selectedIndex].path!) // TODO get from an array
+        print(tmpPath)
+//        let trans2 = CGAffineTransform(scaleX: 8, y: 8)
+//        tmpPath.apply(trans2)
+//        let widthRatio = (drawView.frame.width - 40) / tmpPath.bounds.width
+//        let heightRatio = (drawView.frame.height - 40) / tmpPath.bounds.height
+//        var scaleRatio: CGFloat!
+//        if widthRatio > heightRatio {
+//            scaleRatio = heightRatio
+//        } else {
+//            scaleRatio = widthRatio
+//        }
+//        let trans2 = CGAffineTransform(scaleX: scaleRatio, y: scaleRatio)
+//        tmpPath.apply(trans2)
+//        drawView.pointArrays = alphabetArray[selectedIndex].pointArrays! // TODO get from an array
         
-        let transX = drawView.frame.width / 2 - path.bounds.midX
-        let transY = drawView.frame.height / 2 - path.bounds.midY
+        let transX = drawView.frame.width / 2 - tmpPath.bounds.midX
+        let transY = drawView.frame.height / 2 - tmpPath.bounds.midY
         let trans = CGAffineTransform(translationX: transX, y: transY)
-        path.apply(trans)
-        // translate points
+        tmpPath.apply(trans)
+//        // translate points
         var newPointArrays = [[CGPoint]]()
-        for points in drawView.pointArrays {
+        for points in alphabetArray[selectedIndex].pointArrays! {
             var newPoints = [CGPoint]()
             for point in points {
                 let point2 = point.applying(trans)
@@ -120,22 +157,43 @@ class ViewController: UIViewController {
             }
             newPointArrays.append(newPoints)
         }
-        
+////
         // translate arrows
         var newArrows = [UIBezierPath]()
-        for arrow in AlphabetUtils.getAArows() {
-            let newArrow = arrow
+        for arrow in alphabetArray[selectedIndex].arrows! {
+            var newArrow = UIBezierPath()
+            newArrow.append(arrow)
             newArrow.apply(trans)
             newArrows.append(newArrow)
         }
-        
+//
         drawView.arrows = newArrows
-        
+//        drawView.arrows = alphabetArray[selectedIndex].arrows!
+//
         drawView.pointArrays = newPointArrays
 //                drawView.addLabel()
         drawView.backgroundColor = UIColor.green
-        drawView.setOriginal(path.cgPath)
+        drawView.setOriginal(tmpPath.cgPath)
         drawView.setNeedsDisplay()
+    }
+    
+    func createOriginalView() {
+        let tmpPath = UIBezierPath()
+        tmpPath.append(alphabetArray[selectedIndex].path!) // TODO get from an array
+        let widthRatio = (originalView.frame.width - 10) / tmpPath.bounds.width
+        let heightRatio = (originalView.frame.height - 10) / tmpPath.bounds.height
+        var scaleRatio: CGFloat!
+        if widthRatio > heightRatio {
+            scaleRatio = heightRatio
+        } else {
+            scaleRatio = widthRatio
+        }
+        let trans2 = CGAffineTransform(scaleX: scaleRatio, y: scaleRatio)
+        tmpPath.apply(trans2)
+        let trans1 = CGAffineTransform(translationX: originalView.frame.width / 2 - tmpPath.bounds.midX, y: originalView.frame.height / 2 - tmpPath.bounds.midY)
+        tmpPath.apply(trans1)
+        originalView.image = ViewController.convertPathsToImage(paths: [tmpPath])
+        originalView.contentMode = .topLeft
     }
     
     // convert path to image

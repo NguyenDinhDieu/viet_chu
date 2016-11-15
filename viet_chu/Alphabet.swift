@@ -13,5 +13,5 @@ class Alphabet {
     var unicode: String?
     var path: UIBezierPath?
     var pointArrays: [[CGPoint]]?
-    var arrows: [CGPoint]?
+    var arrows: [UIBezierPath]?
 }
