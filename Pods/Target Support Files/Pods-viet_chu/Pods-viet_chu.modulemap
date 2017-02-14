@@ -1,0 +1,6 @@
+framework module Pods_viet_chu {
+  umbrella header "Pods-viet_chu-umbrella.h"
+
+  export *
+  module * { export * }
+}

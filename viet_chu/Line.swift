@@ -13,9 +13,11 @@ class Line {
     
     var startPoint: CGPoint!
     var endPoint: CGPoint!
+    var color: CGColor!
     
-    init(_ start: CGPoint, _ end: CGPoint) {
+    init(_ start: CGPoint, _ end: CGPoint, _ color: CGColor) {
         startPoint = start
         endPoint = end
+        self.color = color
     }
 }

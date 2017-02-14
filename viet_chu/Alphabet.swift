@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class Alphabet {
-    var unicode: String?
-    var path: UIBezierPath?
-    var pointArrays: [[CGPoint]]?
-    var arrows: [UIBezierPath]?
+    var unicode:String =  ""
+    var path = UIBezierPath()
+    var pointArrays = [[CGPoint]]()
+    var arrows = [UIBezierPath]()
 }
