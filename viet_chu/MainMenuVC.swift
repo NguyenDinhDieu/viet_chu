@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MainMenuVC: UIViewController {
     
@@ -18,14 +19,15 @@ class MainMenuVC: UIViewController {
     
     var selectedTable = Table.alphabetLower
     
+    var bgMusic: AVAudioPlayer!
+    
     override func viewDidLoad() {
         let themeView = UIImageView(frame: self.view.frame)
         themeView.image = UIImage(named: "theme")
         self.view.insertSubview(themeView, at: 0)
         alphabetUpBtn.removeFromSuperview()
         super.viewDidLoad()
-        
-        
+        playMusic()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +37,20 @@ class MainMenuVC: UIViewController {
         numberBtn.center = CGPoint(x: self.view.frame.width / 3 * 2 + 20, y: self.view.frame.height / 3 - 20)
 //        numberBtn.frame.size = CGSize(width: self.view.frame.width / 4 , height: self.view.frame.height / 3)
 //        numberBtn.center = CGPoint(x: self.view.frame.width / 3 - 20, y: self.view.frame.height / 3 * 2)
+    }
+    
+    func playMusic() {
+        let path = Bundle.main.path(forResource: "music2", ofType: "mp3")!
+        let musicUrl = URL(fileURLWithPath: path)
+        do {
+            bgMusic = try AVAudioPlayer(contentsOf: musicUrl)
+            bgMusic.volume = 0.3
+            bgMusic.numberOfLoops = -1
+            bgMusic.play()
+            
+        } catch (let err as NSError) {
+            print(err.debugDescription)
+        }
     }
     
     @IBAction func numberBtnPressed(_ sender: Any) {

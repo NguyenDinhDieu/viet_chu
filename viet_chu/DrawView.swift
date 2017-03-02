@@ -27,6 +27,7 @@ class DrawView: UIView {
     var alphabetSound: AVAudioPlayer!
     var bellSound: AVAudioPlayer!
     var bellUrl: URL!
+    var yaySound: AVAudioPlayer!
     var timer: Timer!
     var insideCount = 0
     var tmpInsideCount = 0
@@ -287,12 +288,13 @@ class DrawView: UIView {
             }
             conImage.center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
             conImage.frame.size = CGSize(width: 5, height: 5)
+            playYaySound()
             self.addSubview(conImage)
             UIView.animate(withDuration: 0.5, animations: {
                 self.conImage.frame.size = CGSize(width: 100, height: 100)
             }, completion: {
                 finished in
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
                     self.conImage.removeFromSuperview()
                     // talk
 //                    let utterance = AVSpeechUtterance(string: self.character.lowercased())
@@ -300,6 +302,7 @@ class DrawView: UIView {
 //                    utterance.rate = 0.3
 //                    self.synthesizer.stopSpeaking(at: .immediate)
 //                    self.synthesizer.speak(utterance)
+                    self.yaySound.stop()
                     self.playSound(self.character.lowercased())
                 })
             })
@@ -378,6 +381,20 @@ class DrawView: UIView {
             }
         }
         bellSound.play()
+    }
+    
+    func playYaySound() {
+        let fileNames = ["win1", "win2", "win3", "win4"]
+        let randomNum:Int = Int(arc4random_uniform(4))
+        let fileName = fileNames[randomNum]
+        let path = Bundle.main.path(forResource: fileName, ofType: "mp3")!
+        let yayUrl = URL(fileURLWithPath: path)
+        do {
+            yaySound = try AVAudioPlayer(contentsOf: yayUrl)
+        } catch (let err as NSError) {
+            print(err.debugDescription)
+        }
+        yaySound.play()
     }
     
     func playSound(_ alphabet: String) {

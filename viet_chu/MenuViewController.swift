@@ -114,6 +114,7 @@ class MenuViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         // Do any additional setup after loading the view.
         boardGame.frame = CGRect(x: 50, y: 50, width: UIScreen.main.bounds.width * 0.8 , height: (UIScreen.main.bounds.height * 0.8))
+        
         let charEachRow:CGFloat = 8
         var rowCount:CGFloat = 1
         var colCount:CGFloat = 1
@@ -151,6 +152,12 @@ class MenuViewController: UIViewController, SFSpeechRecognizerDelegate {
             
         }
         boardGame.center = CGPoint(x: self.view.frame.midX, y: boardGame.center.y)
+        let device = UIDevice()
+        print(device.modelName)
+        if device.modelName == "iPhone 5" {
+            boardGame.center = CGPoint(x: boardGame.center.x - 30, y: boardGame.center.y - 50)
+        }
+
         boardGame.isUserInteractionEnabled = true
         self.view.addSubview(boardGame)
         

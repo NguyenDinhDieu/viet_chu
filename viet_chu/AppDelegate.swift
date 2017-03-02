@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-2978108908176817~7786086887")
+        let defaults = UserDefaults.standard
+        let defaultValue = ["myColor" : 0]
+        defaults.register(defaults: defaultValue)
         return true
     }
 

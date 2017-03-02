@@ -15,6 +15,12 @@
 		115E26A51DD3070F00A4D3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 115E26A41DD3070F00A4D3E5 /* Assets.xcassets */; };
 		115E26A81DD3070F00A4D3E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 115E26A61DD3070F00A4D3E5 /* LaunchScreen.storyboard */; };
 		11A247271DD31BAF006104F2 /* SVGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A247261DD31BAF006104F2 /* SVGPath.swift */; };
+		11BC3B211E66CEA5000A22D6 /* music2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11BC3B201E66CEA5000A22D6 /* music2.mp3 */; };
+		11BC3B231E66D258000A22D6 /* yay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11BC3B221E66D258000A22D6 /* yay.mp3 */; };
+		11BC3B281E67B09F000A22D6 /* win1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11BC3B241E67B09F000A22D6 /* win1.mp3 */; };
+		11BC3B291E67B09F000A22D6 /* win2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11BC3B251E67B09F000A22D6 /* win2.mp3 */; };
+		11BC3B2A1E67B09F000A22D6 /* win3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11BC3B261E67B09F000A22D6 /* win3.mp3 */; };
+		11BC3B2B1E67B09F000A22D6 /* win4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11BC3B271E67B09F000A22D6 /* win4.mp3 */; };
 		11DB8DC01DDD685F00F29A51 /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DB8DBF1DDD685F00F29A51 /* MainMenuVC.swift */; };
 		11E3463C1DDC35A700CE66AA /* PENMP.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 11E3463B1DDC35A700CE66AA /* PENMP.TTF */; };
 		11E969641E52BC3700D565F1 /* 0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11E969571E52BC3700D565F1 /* 0.mp3 */; };
@@ -81,6 +87,12 @@
 		115E26A91DD3070F00A4D3E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11A247251DD31BAF006104F2 /* SVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPath.h; sourceTree = "<group>"; };
 		11A247261DD31BAF006104F2 /* SVGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGPath.swift; sourceTree = "<group>"; };
+		11BC3B201E66CEA5000A22D6 /* music2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music2.mp3; sourceTree = "<group>"; };
+		11BC3B221E66D258000A22D6 /* yay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yay.mp3; sourceTree = "<group>"; };
+		11BC3B241E67B09F000A22D6 /* win1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win1.mp3; sourceTree = "<group>"; };
+		11BC3B251E67B09F000A22D6 /* win2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win2.mp3; sourceTree = "<group>"; };
+		11BC3B261E67B09F000A22D6 /* win3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win3.mp3; sourceTree = "<group>"; };
+		11BC3B271E67B09F000A22D6 /* win4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win4.mp3; sourceTree = "<group>"; };
 		11D131871E4B0A4F00F362C2 /* viet_chu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = viet_chu.entitlements; sourceTree = "<group>"; };
 		11DB8DBF1DDD685F00F29A51 /* MainMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
 		11E3463B1DDC35A700CE66AA /* PENMP.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = PENMP.TTF; sourceTree = "<group>"; };
@@ -202,6 +214,12 @@
 		11E969561E52BC1000D565F1 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				11BC3B241E67B09F000A22D6 /* win1.mp3 */,
+				11BC3B251E67B09F000A22D6 /* win2.mp3 */,
+				11BC3B261E67B09F000A22D6 /* win3.mp3 */,
+				11BC3B271E67B09F000A22D6 /* win4.mp3 */,
+				11BC3B221E66D258000A22D6 /* yay.mp3 */,
+				11BC3B201E66CEA5000A22D6 /* music2.mp3 */,
 				11E969A81E52CA2D00D565F1 /* t.mp3 */,
 				11E969711E52BC6900D565F1 /* b.mp3 */,
 				11E969721E52BC6900D565F1 /* c.mp3 */,
@@ -333,6 +351,7 @@
 				11E969971E52BC6900D565F1 /* n.mp3 in Resources */,
 				11E9698C1E52BC6900D565F1 /* c.mp3 in Resources */,
 				11E9696E1E52BC3700D565F1 /* a.mp3 in Resources */,
+				11BC3B2B1E67B09F000A22D6 /* win4.mp3 in Resources */,
 				11E969671E52BC3700D565F1 /* 3.mp3 in Resources */,
 				11E969981E52BC6900D565F1 /* o.mp3 in Resources */,
 				11E9696D1E52BC3700D565F1 /* 9.mp3 in Resources */,
@@ -349,6 +368,7 @@
 				11E9699C1E52BC6900D565F1 /* q.mp3 in Resources */,
 				115E26A81DD3070F00A4D3E5 /* LaunchScreen.storyboard in Resources */,
 				11E969A41E52BC6900D565F1 /* y.mp3 in Resources */,
+				11BC3B2A1E67B09F000A22D6 /* win3.mp3 in Resources */,
 				11E969681E52BC3700D565F1 /* 4.mp3 in Resources */,
 				11E9698D1E52BC6900D565F1 /* d.mp3 in Resources */,
 				115E26A51DD3070F00A4D3E5 /* Assets.xcassets in Resources */,
@@ -357,14 +377,18 @@
 				11E9699D1E52BC6900D565F1 /* r.mp3 in Resources */,
 				11E9699E1E52BC6900D565F1 /* s.mp3 in Resources */,
 				11E969A01E52BC6900D565F1 /* u.mp3 in Resources */,
+				11BC3B211E66CEA5000A22D6 /* music2.mp3 in Resources */,
 				11E969901E52BC6900D565F1 /* ê.mp3 in Resources */,
 				11E969961E52BC6900D565F1 /* m.mp3 in Resources */,
+				11BC3B231E66D258000A22D6 /* yay.mp3 in Resources */,
+				11BC3B281E67B09F000A22D6 /* win1.mp3 in Resources */,
 				11F61BA91DDF199800B49A14 /* close.wav in Resources */,
 				11E969641E52BC3700D565F1 /* 0.mp3 in Resources */,
 				11E969A91E52CA2D00D565F1 /* t.mp3 in Resources */,
 				11E9698F1E52BC6900D565F1 /* e.mp3 in Resources */,
 				11E969941E52BC6900D565F1 /* k.mp3 in Resources */,
 				115E26A01DD3070F00A4D3E5 /* Main.storyboard in Resources */,
+				11BC3B291E67B09F000A22D6 /* win2.mp3 in Resources */,
 				11E969911E52BC6900D565F1 /* g.mp3 in Resources */,
 				11E969A21E52BC6900D565F1 /* v.mp3 in Resources */,
 				11F07A8F1DDDBBD800D931D1 /* bell.wav in Resources */,

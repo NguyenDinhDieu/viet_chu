@@ -54,6 +54,10 @@ class ViewController: UIViewController, GADInterstitialDelegate {
         leftMenu.addSubview(originalFrameView)
         leftMenu.addSubview(originalView)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.originalViewPressed))
+        originalView.isUserInteractionEnabled = true
+        originalView.addGestureRecognizer(tapGesture)
+        
         // Add bảng màu
         let redBtn = UIButton(frame: CGRect(x: 15, y: originalView.frame.maxY + 20, width: leftMenu.frame.width - 10, height: 20))
         redBtn.tag = 0
@@ -125,7 +129,7 @@ class ViewController: UIViewController, GADInterstitialDelegate {
         rightMenu.addSubview(prevBtn)
         
         // button Phát âm
-        let talkBtn = UIButton(frame: CGRect(x: 6, y: 40 + prevBtn.frame.maxY, width: rightMenu.frame.width - 10, height: 40 ))
+        let talkBtn = UIButton(frame: CGRect(x: 6, y: 35 + prevBtn.frame.maxY, width: rightMenu.frame.width - 10, height: 40 ))
         talkBtn.center = CGPoint(x: rightMenu.frame.width / 2, y: talkBtn.center.y)
 //        talkBtn.setTitle("Listen", for: .normal)
 //        talkBtn.backgroundColor = UIColor.red
@@ -134,14 +138,49 @@ class ViewController: UIViewController, GADInterstitialDelegate {
         rightMenu.addSubview(talkBtn)
         
         // button Quay lại
-        let backBtn = UIButton(frame: CGRect(x: 0, y: rightMenu.frame.height - 50 , width: 80, height: 30 ))
+        let backBtn = UIButton(frame: CGRect(x: 0, y: rightMenu.frame.height - 40 , width: 80, height: 30 ))
 //        backBtn.setTitle("Back", for: .normal)
         backBtn.setImage(UIImage(named: "close1"), for: .normal)
         backBtn.addTarget(self, action: #selector(self.backBtnPressed) , for: .touchUpInside)
         rightMenu.addSubview(backBtn)
         self.view.addSubview(rightMenu)
+        
+        // load saved pen color
+        let defaults = UserDefaults.standard
+        let token = defaults.integer(forKey: "myColor")
+        drawView.currenColor = colorArray[token]
+        for btn in penBtnArray {
+            btn.frame.origin = CGPoint(x: 5, y: btn.frame.origin.y)
+        }
+        penBtnArray[token].frame.origin = CGPoint(x: 15, y: penBtnArray[token].frame.origin.y)
     }
     
+    func originalViewPressed() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.originalView.transform = self.originalView.transform.rotated(by: 0.5)
+        }, completion: {
+            (value: Bool) in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.originalView.transform = self.originalView.transform.rotated(by: -1)
+            }, completion: {
+                (value: Bool) in
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.originalView.transform = self.originalView.transform.rotated(by: 0.5)
+                })
+            })
+        })
+        
+        // talk
+        //        let utterance = AVSpeechUtterance(string: (button.titleLabel?.text)!.lowercased())
+        //        utterance.voice = AVSpeechSynthesisVoice(language: "vi-VN")
+        //        utterance.rate = 0.5
+        //        synthesizer.stopSpeaking(at: .immediate)
+        //        synthesizer.speak(utterance)
+//        playSound((button.titleLabel?.text)!.lowercased())
+        talkBtnPressed()
+    }
+    
+    // creade and load ads
     private func createAndLoadInterstitial() -> GADInterstitial? {
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-2978108908176817/9955113288")
         
@@ -299,6 +338,8 @@ class ViewController: UIViewController, GADInterstitialDelegate {
     func changePenColor(_ sender: UITapGestureRecognizer) {
         let button = sender.view as! UIButton
         drawView.currenColor = colorArray[button.tag]
+        let defaults = UserDefaults.standard
+        defaults.set(button.tag, forKey: "myColor")
         for btn in penBtnArray {
             btn.frame.origin = CGPoint(x: 5, y: btn.frame.origin.y)
         }
